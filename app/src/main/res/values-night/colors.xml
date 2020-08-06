@@ -1,0 +1,21 @@
+<!--?xml version="1.0" encoding="UTF-8"?-->
+<resources>
+
+    <!--Color palette for the night mode-->
+    <color name="newssterPrimaryColor">#52585b</color>
+    <color name="newssterPrimaryLightColor">#7e8588</color>
+    <color name="newssterPrimaryDarkColor">#292f32</color>
+    <color name="newssterSecondaryColor">#f06292</color>
+    <color name="newssterSecondaryLightColor">#ffa8c8</color>
+
+    <!--Components' custom colors-->
+    <color name="customCardviewSurfaceColor">#52585b</color>
+    <color name="customDialogTitlePanelColor">#cfdbe1</color>
+
+    <!--Text colors-->
+    <color name="newssterSecondaryTextColor">#000000</color>
+    <color name="newssterPrimaryTextColor">#ffffff</color>
+    <color name="newssterBlackTextColor">#000000</color>
+
+</resources>
+

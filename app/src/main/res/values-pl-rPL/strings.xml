@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Content description -->
+    <string name="article_head_image">Zdjęcie artykułu</string>
+
+    <!-- Categories-->
+    <string name="business">Bizness</string>
+    <string name="entertainment">Rozrywka</string>
+    <string name="health">Zdrowie</string>
+    <string name="sport">Sport</string>
+    <string name="technology">Technologia</string>
+    <string name="newsster_top">Newsster wybrane</string>
+
+    <!-- Languages -->
+    <string name="english">Angielski</string>
+    <string name="polish">Polski</string>
+    <string name="german">Niemiecki</string>
+    <string name="hungarian">Węgierski</string>
+    <string name="spanish">Hiszpański</string>
+
+    <!-- Sharing article info-->
+    <string name="share_article">share article</string>
+
+    <!-- Reading more info-->
+    <string name="continue_reading">czytaj dalej -></string>
+
+    <!-- Preference Titles -->
+    <string name="mode_header">Wygląd: Dzień / Noc</string>
+    <string name="language_header">Wybierz język</string>
+
+    <!-- Mode Preferences -->
+    <string name="mode_title">Zmień wygląd</string>
+
+    <!-- Menu items -->
+    <string name="action_settings">Ustawienia</string>
+    <string name="action_categories">Kategorie</string>
+
+    <!-- Dialog title -->
+    <string name="dialog_title">Wybierz kategorie</string>
+
+    <string name="retry">Ponów</string>
+
+    <string name="error">Coś poszło nie tak…</string>
+
+</resources>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Components -->
+
+    <!-- Appbar -->
+    <style name="NewssterAppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
+
+    <!-- Menu Item. Set primary color for the text, so it's dark on light bg and vice versa -->
+    <style name="NewssterPopupOverlay" parent="ThemeOverlay.MaterialComponents">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/newssterPrimaryTextColor</item>
+    </style>
+
+
+    <!-- Progress indicator -->
+    <style name="NewssterProgessIndicator" parent="Widget.MaterialComponents.ProgressIndicator.Circular.Indeterminate">
+       <item name="indicatorColor">@color/newssterSecondaryColor</item>
+    </style>
+
+
+    <!-- Retry button -->
+    <style name="NewssterButton" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/newssterSecondaryLightColor</item>
+        <item name="strokeColor">@color/newssterSecondaryColor</item>
+        <item name="strokeWidth">0.8dp</item>
+        <item name="shapeAppearance">?attr/shapeAppearanceMediumComponent</item>
+    </style>
+
+    
+    <!-- Categories Picker Dialog -->
+    <style name="NewssterMaterialAlertDialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="alertDialogStyle">@style/MaterialAlertDialog.App</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/Newsster.Dialog.Title.Text</item>
+        <item name="materialAlertDialogBodyTextStyle">@style/NewssterDialogBodyText</item>
+        <item name="materialAlertDialogTitlePanelStyle">@style/TitlePaneStyleCenter</item>
+        <item name="checkedTextViewStyle">@style/CheckedItemStyle</item>
+        <item name="materialAlertDialogTitleIconStyle">@style/TitleIconStyleCenter</item>
+    </style>
+
+    <style name="MaterialAlertDialog.App" parent="MaterialAlertDialog.MaterialComponents">
+        <item name="shapeAppearance">@style/ShapeAppearance.App.MediumComponent</item>
+    </style>
+
+    <style name="ShapeAppearance.App.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <style name="TitlePaneStyleCenter" parent="MaterialAlertDialog.MaterialComponents.Title.Panel.CenterStacked">
+        <item name="android:background">@color/customDialogTitlePanelColor</item>
+        <item name="android:padding">16dp</item>
+    </style>
+
+    <style name="TitleIconStyleCenter" parent="MaterialAlertDialog.MaterialComponents.Title.Icon.CenterStacked" />
+
+    <style name="CheckedItemStyle" parent="@style/Widget.MaterialComponents.CheckedTextView">
+        <item name="android:foreground">?selectableItemBackground</item>
+    </style>
+    <!-- Dialog End-->
+
+</resources>

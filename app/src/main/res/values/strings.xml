@@ -1,0 +1,58 @@
+<resources>
+    <string name="app_name" translatable="false">Newsster</string>
+
+    <!-- Tools text -->
+    <string name="title" translatable="false">Banks Won’t Rush to Hold Crypto – But OCC’s Regulatory Approval Makes It Harder to Ignore</string>
+    <string name="description" translatable="false">Microsoft’s Xbox games showcase felt like more of a showcase for the Xbox Game Pass than the Xbox Series X console. Microsoft has demonstrated the future of its content that will go beyond owning an Xbox device.</string>
+    <string name="content" translatable="false">If you were heading into Microsofts Xbox game showcase yesterday to witness a demonstration of why next-gen gaming and the worlds most powerful console matter, you were probably left a little disappo. If you were heading into Microsofts Xbox game showcase yesterday to witness a demonstration of why next-gen gaming and the worlds most powerful console matter, you were probably left a little disappo. If you were heading into Microsofts Xbox game showcase yesterday to witness a demonstration of why next-gen gaming and the worlds most powerful console matter, you were probably left a little disappo… </string>
+    <string name="source" translatable="false">BBC News</string>
+    <string name="author" translatable="false">Tom Warren</string>
+    <string name="date" translatable="false">2020–07–24</string>
+    <string name="slash" translatable="false">/</string>
+
+    <!-- Content description -->
+    <string name="article_head_image">Article head image</string>
+
+    <!-- Categories-->
+    <string name="business">Business</string>
+    <string name="entertainment">Entertainment</string>
+    <string name="health">Health</string>
+    <string name="sport">Sport</string>
+    <string name="technology">Technology</string>
+    <string name="newsster_top">Newsster Top</string>
+
+    <!-- Languages -->
+    <string name="english">English</string>
+    <string name="polish">Polish</string>
+    <string name="german">German</string>
+    <string name="hungarian">Hungarian</string>
+    <string name="spanish">Spanish</string>
+
+
+    <!-- Sharing article info-->
+    <string name="share_article">share article</string>
+
+    <!-- Reading more info-->
+    <string name="continue_reading">continue reading -></string>
+
+    <!-- Preference Titles -->
+    <string name="mode_header">Day/night mode</string>
+    <string name="language_header">Choose language</string>
+
+    <!-- Mode Preferences -->
+    <string name="mode_title">Switch mode</string>
+
+    <!-- Menu items -->
+    <string name="action_settings">Settings</string>
+    <string name="action_categories">Categories</string>
+
+    <!-- Dialog title -->
+    <string name="dialog_title">Choose category</string>
+
+    <!-- retry_button -->
+    <string name="retry">Retry</string>
+
+    <!-- Error notification -->
+    <string name="error">Something went wrong…</string>
+
+</resources>

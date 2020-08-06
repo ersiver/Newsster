@@ -1,0 +1,39 @@
+<resources>
+    <!-- Categories Dialog -->
+    <string-array name="categories_titles">
+        <item>@string/newsster_top</item>
+        <item>@string/business</item>
+        <item>@string/entertainment</item>
+        <item>@string/health</item>
+        <item>@string/sport</item>
+        <item>@string/technology</item>
+    </string-array>
+
+    <string-array name="categories_values">
+        <item>""</item>
+        <item>business</item>
+        <item>entertainment</item>
+        <item>health</item>
+        <item>sport</item>
+        <item>technology</item>
+
+    </string-array>
+
+    <string-array name="pref_language_titles">
+        <item>@string/english</item>
+        <item>@string/polish</item>
+        <item>@string/german</item>
+        <item>@string/hungarian</item>
+        <item>@string/spanish</item>
+
+    </string-array>
+
+    <string-array name="pref_language_values">
+        <item>gb</item>
+        <item>pl</item>
+        <item>de</item>
+        <item>hu</item>
+        <item>es</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name = "article_head_image"> Imagen del encabezado del artículo </string>
+    <string name = "business"> Empresa </string>
+    <string name = "entertainment"> Entretenimiento </string>
+    <string name = "health"> Salud </string>
+    <string name = "sport"> Deporte </string>
+    <string name = "technology"> Tecnología </string>
+    <string name = "newsster_top"> Newsster Top </string>
+    <string name = "share_article">compartir artículo</string>
+    <string name = "continue_reading"> continuar leyendo -> </string>
+    <string name = "mode_header"> Modo día / noche </string>
+    <string name = "language_header"> Elegir idioma </string>
+    <string name = "mode_title"> Cambiar modo </string>
+    <string name = "action_settings"> Configuración </string>
+    <string name = "action_categories"> Categorías </string>
+    <string name = "dialog_title"> Elija categoría </string>
+    <string name = "english">Inglés </string>
+    <string name = "polish">Polaco </string>
+    <string name = "german">Alemán </string>
+    <string name = "hungarian">Húngaro </string>
+    <string name="spanish">Española</string>
+    <string name="retry">Rever</string>
+    <string name="error">Algo salió mal…</string>
+
+</resources>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Content description -->
+    <string name="article_head_image"> Cikk fejléc-képe</string>
+
+    <!-- Categories-->
+    <string name="business">Üzleti</string>
+    <string name="entertainment">Szórakozás</string>
+    <string name="health">Egészség</string>
+    <string name="sport">Sport</string>
+    <string name="technology">Technológia</string>
+    <string name="newsster_top">Newsster  felső </string>
+
+    <!-- Languages -->
+    <string name = "english">Angol </string>
+    <string name = "polish">Lengyel </string>
+    <string name = "german">Német </string>
+    <string name = "hungarian">Magyar </string>
+    <string name = "spanish">Spanyol </string>
+
+
+    <!-- Sharing article info-->
+    <string name="share_article">share article</string>
+
+    <!-- Reading more info-->
+    <string name="continue_reading">folytassa az olvasást -></string>
+
+    <!-- Preference Titles -->
+    <string name="mode_header">Nappali / éjszakai üzemmód </string>
+    <string name="language_header">Válasszon nyelvet</string>
+
+    <!-- Mode Preferences -->
+    <string name="mode_title">Váltás mód</string>
+
+    <!-- Menu items -->
+    <string name="action_settings">Beállítások</string>
+    <string name="action_categories">Kategóriák</string>
+
+    <!-- Dialog title -->
+    <string name="dialog_title">Válasszon kategóriát </string>
+
+    <string name="retry">Ujra</string>
+
+    <string name="error">Valami elromlott…</string>
+
+</resources>

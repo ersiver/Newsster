@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navgraph"
+    android:label="main_fragment"
+    app:startDestination="@id/articleListFragment">
+
+    <fragment
+        android:id="@+id/articleListFragment"
+        android:name="com.ersiver.newsster.ui.list.ArticleListFragment"
+        android:label="main_fragment"
+        tools:layout="@layout/article_list_fragment">
+        <action
+            android:id="@+id/action_articleListFragment_to_articleFragment"
+            app:destination="@id/articleFragment" />
+        <action
+            android:id="@+id/action_articleListFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/articleFragment"
+        android:name="com.ersiver.newsster.ui.article.ArticleFragment"
+        android:label="detail_fragment"
+        tools:layout="@layout/article_fragment">
+        <argument
+            android:name="selectedArticle"
+            app:argType="com.ersiver.newsster.model.Article" />
+        <action
+            android:id="@+id/action_articleFragment_to_articleListFragment"
+            app:destination="@id/articleListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.ersiver.newsster.ui.settings.SettingsFragment"
+        android:label="SettingsFragment" >
+        <action
+            android:id="@+id/action_settingsFragment_to_articleListFragment"
+            app:destination="@id/articleListFragment" />
+    </fragment>
+</navigation>

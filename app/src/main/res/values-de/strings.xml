@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Content description -->
+    <string name="article_head_image">Artikelkopfbild</string>
+
+    <!-- Categories-->
+    <string name="business">Geschäft</string>
+    <string name="entertainment">Unterhaltung</string>
+    <string name="health">Gesundheit</string>
+    <string name="sport">Sport</string>
+    <string name="technology">Technologie</string>
+    <string name="newsster_top">Newsster Top</string>
+
+    <string name="english">Englisch</string>
+    <string name="polish">Polish</string>
+    <string name="german">Deutsch</string>
+    <string name="hungarian">Ungarisch</string>
+    <string name="spanish">Spanisch</string>
+
+    <!-- Sharing article info-->
+    <string name="share_article">share article</string>
+
+    <!-- Reading more info-->
+    <string name="continue_reading">weiterlesen-></string>
+
+    <!-- Preference Titles -->
+    <string name="mode_header">Tag / Nacht-Modus </string>
+    <string name="language_header">Sprachen</string>
+
+    <!-- Mode Preferences -->
+    <string name="mode_title">Modus wechseln</string>
+
+    <!-- Menu items -->
+    <string name="action_settings">Einstellungen</string>
+    <string name="action_categories"> Kategorien</string>
+
+    <!-- Dialog title -->
+    <string name="dialog_title">Wählen Sie die Kategorie</string>
+
+    <string name="retry">Retry</string>
+
+    <!-- Error notification -->
+    <string name="error"> Es ist ein Fehler aufgetreten…</string>
+
+
+</resources>

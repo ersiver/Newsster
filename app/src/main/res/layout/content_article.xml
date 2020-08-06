@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".ui.article.ArticleFragment"
+    tools:showIn="@layout/article_fragment">
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/Newsster.Headline4"
+        android:paddingHorizontal="@dimen/grid_2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/grid_2"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/title" />
+
+
+    <RelativeLayout
+        android:id="@+id/source_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:paddingHorizontal="@dimen/grid_2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title">
+
+        <TextView
+            android:id="@+id/source"
+            style="@style/Newsster.Overline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/grid_1"
+            android:layout_marginEnd="@dimen/grid_1"
+            tools:text="@string/source" />
+
+        <TextView
+            android:id="@+id/slash_text_view"
+            style="@style/Newsster.Overline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/grid_1"
+            android:layout_marginEnd="@dimen/grid_1"
+            android:layout_toEndOf="@id/source"
+            android:text="@string/slash"
+            android:textAppearance="?attr/textAppearanceOverline" />
+
+        <TextView
+            android:id="@+id/date"
+            style="@style/Newsster.Overline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/grid_1"
+            android:layout_marginEnd="@dimen/grid_1"
+            android:layout_toEndOf="@id/slash_text_view"
+            android:textAppearance="?attr/textAppearanceOverline"
+            tools:text="@string/date" />
+
+        <TextView
+            android:id="@+id/author"
+            style="@style/Newsster.Body2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/date"
+            tools:text="@string/author" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/description"
+        style="@style/Newsster.Headline6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/grid_2"
+        android:paddingHorizontal="@dimen/grid_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/source_layout"
+        tools:text="@string/description" />
+
+    <TextView
+        android:id="@+id/content"
+        style="@style/Newsster.Body1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/grid_2"
+        android:paddingHorizontal="@dimen/grid_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/description"
+        tools:text="@string/content" />
+
+    <Button
+        android:id="@+id/open_website"
+        style="@style/Newsster.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="@dimen/grid_1"
+        android:layout_height="wrap_content"
+        android:text="@string/continue_reading"
+        android:textAlignment="textStart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/content" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
