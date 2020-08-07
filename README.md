@@ -16,9 +16,9 @@ Newsster is a demo application that uses MVVM pattern and Android Jetpack: the n
   - Navigation - Handle everything needed for in-app navigation.
   - Room - Access app's SQLite database with in-app objects and compile-time checks.
   - Dagger-Hilt for dependency injection.
-<img src="/previews/preview_2.gif" align="right" width="33%"/>
   
 ### Third party
+<img src="/previews/preview_2.gif" align="right" width="33%"/>
   - Glide for image loading.
   - Kotlin Coroutines + Flow for managing background threads with simplified code and reducing needs for callbacks
   - Retrofit2 & OkHttp3 - to make REST requests to the web service integrated.
