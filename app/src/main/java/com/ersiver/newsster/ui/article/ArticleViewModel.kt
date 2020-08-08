@@ -29,6 +29,7 @@ class ArticleViewModel @ViewModelInject constructor(
     val openWebsiteEvent: LiveData<SingleEvent<String>>
         get() = _openWebsiteEvent
 
+
     fun start(articleId: String) {
         _articleId.value = articleId
     }

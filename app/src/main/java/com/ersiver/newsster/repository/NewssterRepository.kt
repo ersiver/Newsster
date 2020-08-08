@@ -20,14 +20,14 @@ import javax.inject.Inject
 class NewssterRepository @Inject constructor(
     private val service: NewssterService,
     private val database: NewssterDatabase
-) {
+) : Repository {
 
     /**
      * Search articles, exposed as a stream of data that will emit
      * every time we get more data from the network.
      */
     @ExperimentalPagingApi
-    fun fetchArticles(language: String, category: String): Flow<PagingData<Article>> {
+    override fun fetchArticles(language: String, category: String): Flow<PagingData<Article>> {
         val pagingSourceFactory =
             { database.articleDao().getNews(language,category) }
 
@@ -38,8 +38,8 @@ class NewssterRepository @Inject constructor(
         ).flow
     }
 
-    fun getArticle(id: String): LiveData<Article> {
-        return database.articleDao().getArticle(id)
+    override fun getArticle(id: String): LiveData<Article> {
+        return database.articleDao().getNewsById(id)
     }
 
     companion object {

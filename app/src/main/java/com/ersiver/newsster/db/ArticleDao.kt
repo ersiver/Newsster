@@ -21,5 +21,5 @@ interface ArticleDao {
     suspend fun clearNews()
 
     @Query("SELECT * FROM article_table WHERE id = :id")
-    fun getArticle(id: String): LiveData<Article>
+    fun getNewsById(id: String): LiveData<Article>
 }
