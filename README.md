@@ -44,7 +44,8 @@ Newsster is a demo application that uses MVVM pattern and Android Jetpack: the n
 + Supporting landscape mode.
 
 ## Preview
-<img src="/previews/screenshot_1.png" width="33%" /> <img src="/previews/screenshot_2.png" width="33%" /> <img src="/previews/screenshot_3.png" width="33%"/>
+<img src="/previews/screenshot_1.png" width="33%" /> <img src="/previews/screenshot_2.png" width="33%" /> 
+<img src="/previews/screenshot_3.png" width="33%"/> <img src="/previews/screenshot_6.png" width="33%"/>
 <img src="/previews/screenshot_4.png" width="33%"/> <img src="/previews/screenshot_5.png" width="33%"/>                                        
 
 ## Open API
