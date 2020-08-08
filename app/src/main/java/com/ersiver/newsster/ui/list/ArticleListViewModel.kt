@@ -55,6 +55,7 @@ class ArticleListViewModel @ViewModelInject constructor(
         currentNews = newNews
         saveCategoryFiltering(category)
         saveLanguageFiltering(language)
+
         return newNews
     }
 
@@ -72,6 +73,7 @@ class ArticleListViewModel @ViewModelInject constructor(
         .getLiveData<String>(
             SAVED_STATE_LANGUAGE
         ).value ?: DEFAULT_STATE_LANGUAGE
+
 
     fun openArticle(article: Article) {
         _navigateToArticleEvent.value = SingleEvent(article)
@@ -91,9 +93,11 @@ class ArticleListViewModel @ViewModelInject constructor(
         savedStateHandle.set(SAVED_STATE_LANGUAGE, language)
     }
 
+
     fun updateCategory(category: String) {
         _categoryLiveData.value = category
     }
+
 
     fun updateLanguage(language: String) {
         _languageLiveData.value = language

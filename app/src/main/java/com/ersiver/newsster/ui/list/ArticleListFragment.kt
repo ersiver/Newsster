@@ -21,7 +21,9 @@ import com.ersiver.newsster.R
 import com.ersiver.newsster.databinding.ArticleListFragmentBinding
 import com.ersiver.newsster.model.Article
 import com.ersiver.newsster.ui.list.ArticleAdapter.ArticleViewClick
-import com.ersiver.newsster.util.*
+import com.ersiver.newsster.util.DEFAULT_LANGUAGE
+import com.ersiver.newsster.util.EventObserver
+import com.ersiver.newsster.util.PREF_LANGUAGE_KEY
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
@@ -59,17 +61,18 @@ class ArticleListFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         getPrefs()
         initAdapter()
-        getNewsAndNotify()
+        getNewsAndNotifyAdapter()
         showFilteringPopUpMenu()
         setupNavigationToArticle()
 
         viewModel.categoryLiveData.observe(viewLifecycleOwner, Observer {
             updateToolbarTitle(it)
-            getNewsAndNotify()
+            getNewsAndNotifyAdapter()
+
         })
 
         viewModel.languageLiveData.observe(viewLifecycleOwner, Observer {
-            getNewsAndNotify()
+            getNewsAndNotifyAdapter()
         })
     }
 
@@ -96,21 +99,20 @@ class ArticleListFragment : Fragment() {
         )
 
         adapter.addLoadStateListener { loadState ->
-            // Only show the list if refresh succeeds.
             binding.articleList.isVisible = loadState.refresh is LoadState.NotLoading
-            // Show loading spinner during initial load or refresh.
             binding.progress.isVisible = loadState.refresh is LoadState.Loading
-
             manageErrors(loadState)
+        }
+
+        adapter.addDataRefreshListener { isRefreshed ->
+            if (isRefreshed) binding.articleList.scrollToPosition(0)
         }
     }
 
     private fun manageErrors(loadState: CombinedLoadStates) {
-        // Show the retry state if initial load or refresh fails.
         binding.retryButton.isVisible = loadState.refresh is LoadState.Error
         binding.retryButton.setOnClickListener { adapter.retry() }
 
-        // Show the message.
         binding.errorText.isVisible = loadState.refresh is LoadState.Error
         val errorState = loadState.source.append as? LoadState.Error
             ?: loadState.source.prepend as? LoadState.Error
@@ -122,7 +124,7 @@ class ArticleListFragment : Fragment() {
         }
     }
 
-    private fun getNewsAndNotify() {
+    private fun getNewsAndNotifyAdapter() {
         job?.cancel()
         job = lifecycleScope.launch {
             viewModel.loadNews().collectLatest {
@@ -144,7 +146,10 @@ class ArticleListFragment : Fragment() {
     }
 
     private fun navigateToSettings() {
-        findNavController().navigate(ArticleListFragmentDirections.actionArticleListFragmentToSettingsFragment())
+        findNavController().navigate(
+            ArticleListFragmentDirections
+                .actionArticleListFragmentToSettingsFragment()
+        )
     }
 
     private fun setupNavigationToArticle() {

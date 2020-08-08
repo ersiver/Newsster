@@ -37,11 +37,13 @@ class NewssterRemoteMediator @Inject constructor(
         try {
             val loadKey: Int = when (loadType) {
                 LoadType.REFRESH -> {
+                    Timber.i("REFRESH")
                     val remoteKeys = getRemoteKeyClosestToCurrentPosition(state)
                     remoteKeys?.nextKey?.minus(1) ?: STARTING_PAGE
                 }
 
                 LoadType.PREPEND -> {
+                    Timber.i("PREPEND")
                     val remoteKey = getRemoteKeyForFirstItem(state)
 
                     if (remoteKey == null) {
@@ -55,7 +57,7 @@ class NewssterRemoteMediator @Inject constructor(
                     remoteKey.prevKey
                 }
                 LoadType.APPEND -> {
-                    Timber.i("T: APPEND")
+                    Timber.i("APPEND")
 
                     val remoteKey = getRemoteKeyForLastItem(state)
 
