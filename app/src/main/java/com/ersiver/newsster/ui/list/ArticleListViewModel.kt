@@ -38,15 +38,16 @@ class ArticleListViewModel @ViewModelInject constructor(
     }
 
     private var currentNews: Flow<PagingData<Article>>? = null
+    val news: Flow<PagingData<Article>>?
+        get() = currentNews
 
     fun loadNews(
     ): Flow<PagingData<Article>> {
-
         val category = _categoryLiveData.value!!
         val language = _languageLiveData.value!!
 
         val lastResult = currentNews
-        if (lastResult != null && !shouldFetch(language, category))
+        if (lastResult != null && !shouldRefresh(language, category))
             return lastResult
 
         val newNews =
@@ -55,21 +56,20 @@ class ArticleListViewModel @ViewModelInject constructor(
         currentNews = newNews
         saveCategoryFiltering(category)
         saveLanguageFiltering(language)
-
         return newNews
     }
 
-    private fun shouldFetch(language: String, category: String): Boolean {
+    private fun shouldRefresh(language: String, category: String): Boolean {
         return category != getLastSavedCategory()
                 || language != getLastSavedLanguage()
     }
 
-    private fun getLastSavedCategory() = savedStateHandle
+     fun getLastSavedCategory() = savedStateHandle
         .getLiveData<String>(
             SAVED_STATE_CATEGORY
         ).value ?: DEFAULT_STATE_CATEGORY
 
-    private fun getLastSavedLanguage() = savedStateHandle
+     fun getLastSavedLanguage() = savedStateHandle
         .getLiveData<String>(
             SAVED_STATE_LANGUAGE
         ).value ?: DEFAULT_STATE_LANGUAGE
@@ -79,27 +79,19 @@ class ArticleListViewModel @ViewModelInject constructor(
         _navigateToArticleEvent.value = SingleEvent(article)
     }
 
-    /**
-     * Sets the current list filtering type.
-     */
-    private fun saveCategoryFiltering(category: String) {
-        savedStateHandle.set(SAVED_STATE_CATEGORY, category)
-    }
-
-    /**
-     * Sets the current language.
-     */
-    private fun saveLanguageFiltering(language: String) {
-        savedStateHandle.set(SAVED_STATE_LANGUAGE, language)
-    }
-
-
     fun updateCategory(category: String) {
         _categoryLiveData.value = category
     }
 
-
     fun updateLanguage(language: String) {
         _languageLiveData.value = language
+    }
+
+    fun saveCategoryFiltering(category: String) {
+        savedStateHandle.set(SAVED_STATE_CATEGORY, category)
+    }
+
+    fun saveLanguageFiltering(language: String) {
+        savedStateHandle.set(SAVED_STATE_LANGUAGE, language)
     }
 }

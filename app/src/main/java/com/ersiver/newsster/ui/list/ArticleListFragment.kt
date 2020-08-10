@@ -30,7 +30,6 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-
 @AndroidEntryPoint
 @ExperimentalPagingApi
 class ArticleListFragment : Fragment() {
@@ -62,13 +61,12 @@ class ArticleListFragment : Fragment() {
         getPrefs()
         initAdapter()
         getNewsAndNotifyAdapter()
-        showFilteringPopUpMenu()
+        showCategoryPopupMenu()
         setupNavigationToArticle()
 
         viewModel.categoryLiveData.observe(viewLifecycleOwner, Observer {
             updateToolbarTitle(it)
             getNewsAndNotifyAdapter()
-
         })
 
         viewModel.languageLiveData.observe(viewLifecycleOwner, Observer {
@@ -76,13 +74,9 @@ class ArticleListFragment : Fragment() {
         })
     }
 
-    /**
-     * Get the user's language selection from SharedPreferences
-     */
     private fun getPrefs() {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
         val language = sharedPreferences.getString(PREF_LANGUAGE_KEY, DEFAULT_LANGUAGE).toString()
-
         viewModel.updateLanguage(language)
     }
 
@@ -109,6 +103,15 @@ class ArticleListFragment : Fragment() {
         }
     }
 
+    private fun getNewsAndNotifyAdapter() {
+        job?.cancel()
+        job = lifecycleScope.launch {
+            viewModel.loadNews().collectLatest {
+                adapter.submitData(it)
+            }
+        }
+    }
+
     private fun manageErrors(loadState: CombinedLoadStates) {
         binding.retryButton.isVisible = loadState.refresh is LoadState.Error
         binding.retryButton.setOnClickListener { adapter.retry() }
@@ -124,16 +127,7 @@ class ArticleListFragment : Fragment() {
         }
     }
 
-    private fun getNewsAndNotifyAdapter() {
-        job?.cancel()
-        job = lifecycleScope.launch {
-            viewModel.loadNews().collectLatest {
-                adapter.submitData(it)
-            }
-        }
-    }
-
-    private fun showFilteringPopUpMenu() {
+    private fun showCategoryPopupMenu() {
         binding.apply {
             toolbar.setOnMenuItemClickListener {
                 if (it.itemId == R.id.settings) {

@@ -9,6 +9,7 @@ import org.junit.Before
 
 import org.junit.Assert.*
 import org.junit.runner.RunWith
+import java.io.IOException
 
 @RunWith(AndroidJUnit4::class)
 abstract class LocalDatabase {
@@ -16,7 +17,7 @@ abstract class LocalDatabase {
     lateinit var database: NewssterDatabase
 
     @Before
-    fun setUpDatabase() {
+    fun createDb() {
         database = Room.inMemoryDatabaseBuilder(
             getApplicationContext(),
             NewssterDatabase::class.java
@@ -25,6 +26,7 @@ abstract class LocalDatabase {
     }
 
     @After
+    @Throws(IOException::class)
     fun tearDown() {
         database.close()
     }

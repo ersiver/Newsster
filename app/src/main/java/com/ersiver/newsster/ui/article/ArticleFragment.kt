@@ -25,6 +25,7 @@ import com.ersiver.newsster.util.*
 @AndroidEntryPoint
 class ArticleFragment : Fragment() {
     private val articleViewModel by viewModels<ArticleViewModel>()
+
     private val args: ArticleFragmentArgs by navArgs()
     private val article: Article by lazy {
         args.selectedArticle
@@ -45,9 +46,9 @@ class ArticleFragment : Fragment() {
         setupActionBarWithNavController()
         setupOpenWebsiteButton()
 
-        articleViewModel.start(article.id)
+        articleViewModel.fetchArticle(article.id)
 
-        articleViewModel.article.observe(viewLifecycleOwner, Observer { article ->
+        articleViewModel.articleLiveData.observe(viewLifecycleOwner, Observer { article ->
             displayArticle(article)
         })
 
@@ -66,9 +67,6 @@ class ArticleFragment : Fragment() {
         }
     }
 
-    /**
-     * Attach the Article to the view.
-     */
     private fun displayArticle(selectedArticle: Article) {
         binding.apply {
             article.author.loadOrGone(selectedArticle.author)
@@ -81,9 +79,6 @@ class ArticleFragment : Fragment() {
         }
     }
 
-    /**
-     * Setup up-button and action menu associated with a Toolber.
-     */
     private fun setupActionBarWithNavController() {
         val navController = findNavController()
         val appBarConfiguration = AppBarConfiguration(navController.graph)
@@ -99,11 +94,6 @@ class ArticleFragment : Fragment() {
         }
     }
 
-    /**
-     * Handles the onClick for the "Share Link" action menu.
-     * Sends an implicit intent for the Article url. An app
-     * chooser appears with the available options for sharing
-     */
     private fun shareArticle(articleUrl: String) {
         val mimeType = "text/plain"
         ShareCompat.IntentBuilder
@@ -114,10 +104,6 @@ class ArticleFragment : Fragment() {
             .startChooser()
     }
 
-    /**
-     * Handles the onClick for the "Open Website" button.
-     * Transfers to the Article URL.
-     */
     private fun openWebsite(articleUrl: String) {
         val webPage: Uri = Uri.parse(articleUrl)
         val intent = Intent(Intent.ACTION_VIEW, webPage)

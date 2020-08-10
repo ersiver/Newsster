@@ -14,15 +14,10 @@ import androidx.lifecycle.Observer
  * [onEventUnhandledContent] is *only* called if the [SingleEvent]'s
  * contents has not been handled.
  */
-
-
 open class SingleEvent<T>(private val content: T) {
     var hasBeenHandled = false
         private set
 
-    /**
-     * Returns the content and prevents its use again.
-     */
     fun getContentIfNotHandled(): T? {
         return if (hasBeenHandled) {
             null

@@ -114,10 +114,6 @@ class NewssterRemoteMediator @Inject constructor(
         }
     }
 
-    /**
-     * Based on the anchorPosition from the state, get the closest
-     * Article item to that position and retrieve page key.
-     */
     private suspend fun getRemoteKeyClosestToCurrentPosition(state: PagingState<Int, Article>): RemoteKey? {
         return state.anchorPosition?.let { position ->
             state.closestItemToPosition(position)?.id?.let { articleId ->
@@ -126,9 +122,6 @@ class NewssterRemoteMediator @Inject constructor(
         }
     }
 
-    /**
-     * Based on the last article in the database get the network page key.
-     */
     private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, Article>): RemoteKey? {
         return state.pages.lastOrNull {
             it.data.isNotEmpty()
@@ -137,9 +130,6 @@ class NewssterRemoteMediator @Inject constructor(
         }
     }
 
-    /**
-     * Based on the first article in the database get the network page key.
-     */
     private suspend fun getRemoteKeyForFirstItem(state: PagingState<Int, Article>): RemoteKey? {
         return state.pages.firstOrNull() {
             it.data.isNotEmpty()

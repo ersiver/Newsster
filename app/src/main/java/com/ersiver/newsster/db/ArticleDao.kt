@@ -1,6 +1,5 @@
 package com.ersiver.newsster.db
 
-import androidx.lifecycle.LiveData
 import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Insert
@@ -21,5 +20,5 @@ interface ArticleDao {
     suspend fun clearNews()
 
     @Query("SELECT * FROM article_table WHERE id = :id")
-    fun getNewsById(id: String): LiveData<Article>
+    suspend fun getNewsById(id: String): Article
 }
