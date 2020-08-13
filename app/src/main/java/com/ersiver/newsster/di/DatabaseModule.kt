@@ -8,11 +8,12 @@ import com.ersiver.newsster.db.RemoteKeyDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
-@InstallIn(SingletonComponent::class)
+@InstallIn(ApplicationComponent::class)
 object DatabaseModule {
 
     @Provides
@@ -25,7 +26,6 @@ object DatabaseModule {
     }
 
     @Provides
-    @Singleton
     fun provideArticleDao(newssterDatabase: NewssterDatabase): ArticleDao{
         return newssterDatabase.articleDao()
     }
