@@ -10,6 +10,9 @@
     <string name="date" translatable="false">2020–07–24</string>
     <string name="slash" translatable="false">/</string>
 
+    <!-- Preference Key -->
+    <string name="preference_file_key" translatable="false">Shared Prefs Key</string>
+
     <!-- Content description -->
     <string name="article_head_image">Article head image</string>
 

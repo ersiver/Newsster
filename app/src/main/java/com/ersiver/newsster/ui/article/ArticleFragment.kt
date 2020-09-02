@@ -27,6 +27,7 @@ class ArticleFragment : Fragment() {
     private val articleViewModel by viewModels<ArticleViewModel>()
 
     private val args: ArticleFragmentArgs by navArgs()
+
     private val article: Article by lazy {
         args.selectedArticle
     }
