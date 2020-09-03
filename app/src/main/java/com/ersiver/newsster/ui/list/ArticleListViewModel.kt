@@ -34,7 +34,6 @@ class ArticleListViewModel @ViewModelInject constructor(
 
     init {
         _categoryLiveData.value = getLastSavedCategory()
-        _languageLiveData.value = getLastSavedLanguage()
     }
 
     private var currentNews: Flow<PagingData<Article>>? = null
@@ -64,6 +63,11 @@ class ArticleListViewModel @ViewModelInject constructor(
                 || language != getLastSavedLanguage()
     }
 
+    private fun shouldRefresh(category: String): Boolean {
+        return category != getLastSavedCategory()
+
+    }
+
      fun getLastSavedCategory() = savedStateHandle
         .getLiveData<String>(
             SAVED_STATE_CATEGORY
@@ -72,8 +76,7 @@ class ArticleListViewModel @ViewModelInject constructor(
      fun getLastSavedLanguage() = savedStateHandle
         .getLiveData<String>(
             SAVED_STATE_LANGUAGE
-        ).value ?: DEFAULT_STATE_LANGUAGE
-
+        ).value ?: DEFAULT_LANGUAGE
 
     fun openArticle(article: Article) {
         _navigateToArticleEvent.value = SingleEvent(article)

@@ -2,18 +2,18 @@
 
     <PreferenceCategory app:title="@string/mode_header">
         <SwitchPreferenceCompat
+            app:defaultValue="false"
             app:key="mode_key"
-            app:title="@string/mode_title"
-            app:defaultValue="false"/>
+            app:title="@string/mode_title" />
     </PreferenceCategory>
 
     <PreferenceCategory app:title="Language">
         <ListPreference
-            app:key="language_key"
-            app:title="@string/language_header"
+            app:defaultValue="gb"
+            app:dialogTitle="@string/language_header"
             app:entries="@array/pref_language_titles"
             app:entryValues="@array/pref_language_values"
-            app:defaultValue="gb"
-            app:dialogTitle="@string/language_header"/>
+            app:key="language_key"
+            app:title="@string/language_header" />
     </PreferenceCategory>
 </PreferenceScreen>

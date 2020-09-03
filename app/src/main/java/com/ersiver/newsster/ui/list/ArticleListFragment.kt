@@ -95,12 +95,14 @@ class ArticleListFragment : Fragment() {
         adapter.addLoadStateListener { loadState ->
             binding.articleList.isVisible = loadState.refresh is LoadState.NotLoading
             binding.progress.isVisible = loadState.refresh is LoadState.Loading
+            scrollToTopWhenRefreshed(loadState)
             manageErrors(loadState)
         }
+    }
 
-        adapter.addDataRefreshListener { isRefreshed ->
-            if (isRefreshed) binding.articleList.scrollToPosition(0)
-        }
+    private fun scrollToTopWhenRefreshed(loadState: CombinedLoadStates) {
+        if (loadState.refresh == LoadState.Loading)
+            binding.articleList.scrollToPosition(0)
     }
 
     private fun getNewsAndNotifyAdapter() {

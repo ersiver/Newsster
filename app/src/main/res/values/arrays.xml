@@ -25,7 +25,6 @@
         <item>@string/german</item>
         <item>@string/hungarian</item>
         <item>@string/spanish</item>
-
     </string-array>
 
     <string-array name="pref_language_values">
