@@ -122,9 +122,11 @@ dependencies {
     def daggerHiltVersion = "1.0.0-alpha02"
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$daggerHiltVersion"
     kapt "androidx.hilt:hilt-compiler:$daggerHiltVersion"
-
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+
+    // Timber
+    implementation 'com.jakewharton.timber:timber:4.7.1'
 
     //Local test
     testImplementation 'junit:junit:4.12'
@@ -133,6 +135,10 @@ dependencies {
     testImplementation 'androidx.arch.core:core-testing:2.1.0'
     testImplementation 'org.mockito:mockito-core:3.3.3'
     testImplementation 'org.mockito:mockito-inline:3.3.3'
+    testImplementation 'androidx.test:core-ktx:1.3.0'
+    testImplementation 'androidx.test.ext:junit:1.1.2'
+    testImplementation 'androidx.test:core-ktx:1.3.0'
+    testImplementation 'androidx.test.ext:junit:1.1.2'
 
     //Instrumented test
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
@@ -140,28 +146,13 @@ dependencies {
     androidTestImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.8'
     androidTestImplementation 'androidx.arch.core:core-testing:2.1.0'
     androidTestImplementation 'com.linkedin.dexmaker:dexmaker-mockito:2.12.1'
-
-    def androidXTestExtKotlinRunnerVersion = '1.1.2'
-    androidTestImplementation "androidx.test.ext:junit-ktx:$androidXTestExtKotlinRunnerVersion"
+    androidTestImplementation 'androidx.test.ext:junit-ktx:1.1.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
 
     debugImplementation 'androidx.fragment:fragment-testing:1.3.0-alpha08'
     implementation 'androidx.test:core:1.3.0'
 
-    // AndroidX Test - Instrumented testing
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-
-    // AndroidX Test - JVM testing
-    testImplementation 'androidx.test:core-ktx:1.3.0'
-    testImplementation 'androidx.test.ext:junit:1.1.2'
-
-
     // Hilt testing dependency
     androidTestImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
-    // Make Hilt generate code in the androidTest folder
     kaptAndroidTest "com.google.dagger:hilt-android-compiler:$hilt_version"
-
-
-    // Timber
-    implementation 'com.jakewharton.timber:timber:4.7.1'
-
 }

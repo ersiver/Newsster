@@ -27,8 +27,8 @@ class ArticleListViewModelTest {
     @get:Rule
     var instantExecutorRule = InstantTaskExecutorRule()
 
-    lateinit var repository: NewssterRepository
-    lateinit var viewModel: ArticleListViewModel
+    private lateinit var repository: NewssterRepository
+    private lateinit var viewModel: ArticleListViewModel
 
     private val article = TestUtil.createArticle()
 
