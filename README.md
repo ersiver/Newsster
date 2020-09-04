@@ -1,7 +1,7 @@
 # Newsster
 <img src="/previews/preview_1.gif" align="right" width="33%"/>
 
-Newsster is a demo application that uses MVVM pattern and Android Jetpack: the new Pagging 3 library with a backend API, Saved State module for ViewModel, LiveData, ViewBinding, Room, Dagger-Hilt and Navigations Components.The app fetches data from the network with use of Retrofit integrating persisted data in the database via repository pattern. The app also uses and Kotlin Coroutines + Flow. Newsster provides translated text for the other languages, support for a landscape orientation and a night mode. 
+Newsster is a demo application that uses MVVM pattern and Android Jetpack: the Pagging 3 library with a backend API, Saved State module for ViewModel, LiveData, ViewBinding, Room, Dagger-Hilt and Navigations Components. The app fetches data from the network with use of Retrofit integrating persisted data in the database via repository pattern. The app also uses and Kotlin Coroutines + Flow. Newsster provides translated text for the other languages, support for a landscape orientation and a night mode. 
 
 ## Tech stack & Open-source libraries
 ### Jetpack components:</b>
@@ -17,7 +17,7 @@ Newsster is a demo application that uses MVVM pattern and Android Jetpack: the n
   - Room - Access app's SQLite database with in-app objects and compile-time checks.
   - Dagger-Hilt for dependency injection.
   
-### Third party
+### Third party:
 <img src="/previews/preview_2.gif" align="right" width="33%"/>
 
   - Glide for image loading.
@@ -26,7 +26,7 @@ Newsster is a demo application that uses MVVM pattern and Android Jetpack: the n
   - Moshi to handle the deserialization of the returned JSON to Kotlin data objects.
   - Timber for logs.
   
-### Testing  
+### Testing:  
 ####  Device Tests
   - <b>Database Testing</b> - The project creates an in memory database for each database test but still runs them on the device. 
 #### Local Unit Tests
@@ -34,7 +34,7 @@ Newsster is a demo application that uses MVVM pattern and Android Jetpack: the n
   - <b>ViewModel Tests</b> - ViewModels are tested using local unit tests with mock Repository implementations.
   
   
-### Architecture
+### Architecture:
   - MVVM Architecture 
   - Repository pattern
   
