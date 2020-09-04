@@ -38,23 +38,23 @@ Newsster is a demo application that uses MVVM pattern and Android Jetpack: the n
   - MVVM Architecture 
   - Repository pattern
   
-### Design
+## Design
 + Newsster is built with Material Components for Android.
 + The app starts with an asymmetric staggered list of news displayed in the RecyclerView widget. The screen also consists of options menu with category item as an icon in the app bar and setting item that appears in the overflow menu and lets the user switch themes and language. The screen takes the user to the article details with a beautiful collapsing layout. 
 + The app has dialogs, buttons, menu and progress indicator customized for colors, shapes and typography. All clickable components behave intuitively changing their appearance when they are pressed.
 + The app has beautiful colors schemes for day and night modes.
 
-### Features
+## Features
 + Translation for other languages.
 + Picking categories.
 + Opening an article's web site,
 + Sharing and article link,
 + Supporting landscape mode.
 
-### Preview
+## Preview
 <img src="/previews/screenshot_1.png" width="33%" /> <img src="/previews/screenshot_2.png" width="33%" /> 
 <img src="/previews/screenshot_6.png" width="33%"/> <img src="/previews/screenshot_3.png" width="33%"/>
 <img src="/previews/screenshot_4.png" width="33%"/> <img src="/previews/screenshot_5.png" width="33%"/>                                        
 
-### Open API
+## Open API
 Newsster uses the [NewsApi] for constructing RESTful API. Obtain your free API_KEY: https://newsapi.org/register and paste it to the Constants file to try the app.
