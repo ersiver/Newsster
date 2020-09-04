@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.VisibleForTesting
 import androidx.core.app.ShareCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -24,6 +25,7 @@ import com.ersiver.newsster.util.*
 
 @AndroidEntryPoint
 class ArticleFragment : Fragment() {
+    @VisibleForTesting
     private val articleViewModel by viewModels<ArticleViewModel>()
 
     private val args: ArticleFragmentArgs by navArgs()
@@ -39,11 +41,7 @@ class ArticleFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = ArticleFragmentBinding.inflate(inflater, container, false)
-        return binding.root
-    }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
         setupActionBarWithNavController()
         setupOpenWebsiteButton()
 
@@ -60,6 +58,8 @@ class ArticleFragment : Fragment() {
         articleViewModel.openWebsiteEvent.observe(viewLifecycleOwner, EventObserver { articleUrl ->
             openWebsite(articleUrl)
         })
+
+        return binding.root
     }
 
     private fun setupOpenWebsiteButton() {

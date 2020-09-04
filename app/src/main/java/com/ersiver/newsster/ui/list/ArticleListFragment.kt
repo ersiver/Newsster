@@ -52,12 +52,7 @@ class ArticleListFragment : Fragment() {
     ): View? {
         _binding = ArticleListFragmentBinding.inflate(inflater, container, false)
         toolbar = binding.toolbar
-        return binding.root
-    }
 
-    @ExperimentalPagingApi
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
         getPrefs()
         initAdapter()
         getNewsAndNotifyAdapter()
@@ -72,6 +67,8 @@ class ArticleListFragment : Fragment() {
         viewModel.languageLiveData.observe(viewLifecycleOwner, Observer {
             getNewsAndNotifyAdapter()
         })
+
+        return binding.root
     }
 
     private fun getPrefs() {
