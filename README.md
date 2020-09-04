@@ -15,7 +15,7 @@ Newsster is a demo application that uses MVVM pattern and Android Jetpack: the P
   - SafeArgs for navigating and passing data between fragments.
   - Navigation - Handle everything needed for in-app navigation.
   - Room - Access app's SQLite database with in-app objects and compile-time checks.
-  - Dagger-Hilt for dependency injection.
+  - Dagger-Hilt for dependency injection. Object creation and scoping is handled by Hilt.
   
 ### Third party:
 <img src="/previews/preview_2.gif" align="right" width="33%"/>

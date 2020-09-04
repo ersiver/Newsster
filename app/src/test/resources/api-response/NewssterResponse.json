@@ -1,0 +1,266 @@
+{
+  "status": "ok",
+  "totalResults": 20,
+  "articles": [
+    {
+    "source": {
+      "id": "bbc-news",
+      "name": "BBC News"
+    },
+    "author": "https://www.facebook.com/bbcnews",
+    "title": "I'm A Celebrity will swap jungle for ruined British castle.",
+    "description": "The reality show will swap the Australian jungle for a ruined British castle for this year's series.",
+    "url": "https://www.bbc.co.uk/news/entertainment-arts-53693651",
+    "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/FA36/production/_113845046_jossa_shutterstock_2.jpg",
+    "publishedAt": "2020-08-07T10:18:03Z",
+    "content": "Image copyrightITV/ShutterstockImage caption Jacqueline Jossa doing a bush tucker trial on her way to winning the 2019 series [+2602 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "The Guardian"
+      },
+      "author": "Tim de Lisle",
+      "title": "England v Pakistan: first Test, day three – live! - The Guardian",
+      "description": "Will Pakistan apply the pressure on day three? Join our writers to find out",
+      "url": "https://www.theguardian.com/sport/live/2020/aug/07/england-v-pakistan-first-test-day-three-live",
+      "urlToImage": "https://i.guim.co.uk/img/media/cc5c59c14bdee7cca7eb39dfe513e0b8a5b85c44/0_54_3500_2100/master/3500.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctbGl2ZS5wbmc&enable=upscale&s=b20891d6c5cbe9990bfdeb415acf08b0",
+      "publishedAt": "2020-08-07T10:40:00Z",
+      "content": null
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Mirror Online"
+      },
+      "author": "Neil Murphy",
+      "title": "Ex MP Eric Joyce avoids jail for making indecent image of a child - Mirror.co.uk",
+      "description": "A judge at Ipswich Crown Court sentenced him to eight months in prison suspended for two years and ordered to complete 150 hours of unpaid work.",
+      "url": "https://www.mirror.co.uk/news/politics/breaking-ex-mp-eric-joyce-22484166",
+      "urlToImage": "https://i2-prod.mirror.co.uk/incoming/article22484933.ece/ALTERNATES/s1200/0_Eric-Joyce-court-case.jpg",
+      "publishedAt": "2020-08-07T10:22:00Z",
+      "content": "Disgraced former MP Eric Joyce has avoided jail after pleading guilty to making an indecent image of a child.\r\nJoyce, 59, pleaded guilty to the offence at Ipswich Crown Court in July and was instruct… [+1856 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Mirror Online"
+      },
+      "author": "Richard Vernalls, Danya Bazaraa",
+      "title": "Keeley Bunker: Friend jailed for her rape and murder after she trusted he'd keep her safe - Mirror.co.uk",
+      "description": "Wesley Streete was found guilty of raping and murdering Keeley Bunker after she trusted him to walk her home safe following a night out to Birmingham celebrating her birthday",
+      "url": "https://www.mirror.co.uk/news/uk-news/keeley-bunker-childhood-friend-jailed-22484025",
+      "urlToImage": "https://i2-prod.mirror.co.uk/incoming/article20132341.ece/ALTERNATES/s1200/2_JS19323658228.jpg",
+      "publishedAt": "2020-08-07T10:07:00Z",
+      "content": "Keeley Bunker's childhood friend has been jailed for 30 years after raping and murdering her. \r\nWesley Streete was found guilty of raping and murdering \"compassionate, loving, caring\" Ms Bunker after… [+4276 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Theguardian.comworld"
+      },
+      "author": "Stephanie Kirchgaessner",
+      "title": "Saudi crown prince accused in lawsuit of sending hit squad to Canada - The Guardian",
+      "description": "US lawsuit by ex-Saudi intelligence official accuses Mohammed bin Salman of plotting to kill him",
+      "url": "https://amp.theguardian.comworld/2020/aug/07/former-saudi-official-accuses-saudi-crown-prince-of-plot-to-kill-him",
+      "urlToImage": "https://i.guim.co.uk/img/media/daadd1fad5dce4d465eaa4fd8fdb360425d6b161/310_150_3619_2172/master/3619.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=e995365ae8c32373d32fef94d82d12fa",
+      "publishedAt": "2020-08-07T09:35:00Z",
+      "content": "A former senior Saudi intelligence official with close ties to western intelligence agencies has accused Crown Prince Mohammed bin Salman of plotting to kill him, claiming in a US lawsuit that one su… [+4501 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Belfast Live"
+      },
+      "author": "Shauna Corr",
+      "title": "Coronavirus Northern Ireland NISRA stats show one further death from the virus - Belfast Live",
+      "description": "Over the last 18 weeks 1,031 'excess deaths' have been registered in Northern Ireland",
+      "url": "https://www.belfastlive.co.uk/news/health/coronavirus-northern-ireland-nisra-stats-18731781",
+      "urlToImage": "https://i2-prod.belfastlive.co.uk/incoming/article18674308.ece/ALTERNATES/s1200/0_GettyImages-1217849959.jpg",
+      "publishedAt": "2020-08-07T09:29:00Z",
+      "content": "One more death related to Covid-19 has been reported in the latest figures from the Northern Ireland Statistics and Research Agency. \r\n NISRA says a total of 855 Coronavirus related deaths have occur… [+2361 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Leicestershire Live"
+      },
+      "author": "Dan Martin, Amy Orton",
+      "title": "Live updates: Government expected to make a Leicester lockdown announcement today - Leicestershire Live",
+      "description": "Rules are set to be reviewed ahead of hospitality sector's first weekend open since March",
+      "url": "https://www.leicestermercury.co.uk/news/leicester-news/live-updates-government-expected-make-4403269",
+      "urlToImage": "https://i2-prod.leicestermercury.co.uk/incoming/article4391249.ece/ALTERNATES/s1200/0_DSC_9971JPG.jpg",
+      "publishedAt": "2020-08-07T09:23:00Z",
+      "content": "The Government is expected to make an announcement on Friday on the status of the local lockdown measures in Leicester.\r\n Measures banning mixing between households were due for review next week, aft… [+1443 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Eurogamer.net"
+      },
+      "author": "Wesley Yin-Poole",
+      "title": "Apple blocks Project xCloud on iOS - Eurogamer.net",
+      "description": null,
+      "url": "https://www.eurogamer.net/articles/2020-08-07-apple-blocks-project-xcloud-on-ios",
+      "urlToImage": "https://d2skuhm0vrry40.cloudfront.net/2020/articles/2020-08-07-10-08/apple-blocks-project-xcloud-on-ios-1596791296606.jpg/EG11/resize/1200x-1/apple-blocks-project-xcloud-on-ios-1596791296606.jpg",
+      "publishedAt": "2020-08-07T09:11:00Z",
+      "content": "Apple has blocked Project xCloud on iOS.\r\nMicrosoft has abandoned testing the streaming service on Apple devices, and issued a strongly-worded statement criticising Apple's decision.\r\nIn a statement … [+3099 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Theguardian.comworld"
+      },
+      "author": "Amelia Hill",
+      "title": "How to hug in lockdown: plan ahead and wash your hands - The Guardian",
+      "description": "Lack of touch has impacted mental health during the pandemic, so experts suggest ways to embrace as safely as possible",
+      "url": "https://amp.theguardian.comworld/2020/aug/07/how-to-hug-in-lockdown-plan-ahead-and-wash-your-hands",
+      "urlToImage": "https://i.guim.co.uk/img/media/df8805ffe4f992611c02c6ad7051daa7a1fec5aa/0_49_5568_3341/master/5568.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=03ffb6072e5fba02eebc4cc305cbd7d6",
+      "publishedAt": "2020-08-07T09:00:00Z",
+      "content": "To hug or not to hug? And what about washing your hands beforehand, turning your face away from your loved one, and holding your breath during the embrace?\r\nAs England moves into lockdown-lite, these… [+3550 chars]"
+    },
+    {
+      "source": {
+        "id": "financial-times",
+        "name": "Financial Times"
+      },
+      "author": "Chloe Cornish",
+      "title": "Protests erupt in Beirut as fury against Lebanese authorities grows - Financial Times",
+      "description": "News, analysis and comment from the Financial Times, the worldʼs leading global business publication",
+      "url": "https://www.ft.com/content/b91c530d-8e7a-4100-8640-4912a74b3601",
+      "urlToImage": null,
+      "publishedAt": "2020-08-07T08:41:00Z",
+      "content": "Keep abreast of significant corporate, financial and political developments around the world.\r\nStay informed and spot emerging risks and opportunities with independent global reporting, expert\r\ncomme… [+32 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "BBC News"
+      },
+      "author": "https://www.facebook.com/bbcnews",
+      "title": "Daniel Kaluuya plays US revolutionary in Judas and the Black Messiah - BBC News",
+      "description": "The British star is playing Black Panther Fred Hampton, whose death shocked America.",
+      "url": "https://www.bbc.com/news/entertainment-arts-53676763",
+      "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/22F0/production/_113844980_screenshot2020-08-07at08.49.46.png",
+      "publishedAt": "2020-08-07T08:21:14Z",
+      "content": "Image copyrightWarner Bros\r\n\"You can kill a freedom fighter but you can't kill freedom,\" declares Daniel Kaluuya, in the dramatic trailer for a new film about the life of Black Panther leader Fred Ha… [+6339 chars]"
+    },
+    {
+      "source": {
+        "id": "independent",
+        "name": "Independent"
+      },
+      "author": "Annabel Nugent",
+      "title": "Ellen DeGeneres accused of calling 11-year-old boy ‘fat and stupid’ before finding fame - The Independent",
+      "description": "New claims follow allegations from staff on ‘The Ellen DeGeneres Show’ that the show had a ‘toxic’ work environment",
+      "url": "https://www.independent.co.uk/arts-entertainment/tv/news/ellen-degeneres-show-child-bullying-accusations-ben-gravolet-a9658901.html",
+      "urlToImage": "https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/07/19/09/gettyimages-1072884320.jpg",
+      "publishedAt": "2020-08-07T08:16:00Z",
+      "content": "Ellen DeGeneres has been accused of bullying an 11-year-old boy in a pre-fame incident, while she was working as a recruiter in her twenties. \r\nSpeaking to DailyMailTV, Ben Gravolet made a series of … [+1441 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Mirror Online"
+      },
+      "author": "Emma Munbodh",
+      "title": "Travel money firm Travelex saved from collapse - but 1,300 jobs will go - Mirror Online",
+      "description": "In a statement on Friday, PriceWaterHouseCoopers (PwC) said the company has secured an £84million rescue package that will keep it afloat for the foreseeable future",
+      "url": "https://www.mirror.co.uk/money/breaking-travel-money-firm-travelex-22483914",
+      "urlToImage": "https://i2-prod.mirror.co.uk/incoming/article22483967.ece/ALTERNATES/s1200/0_Travelex-job-cuts.jpg",
+      "publishedAt": "2020-08-07T08:11:00Z",
+      "content": "Travel money firm Travelex has been saved from collapse, but 1,300 jobs will be lost in the UK, administrators have announced.\r\nIn a statement on Friday, PriceWaterHouseCoopers (PwC) said the company… [+2233 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Financial Reporter"
+      },
+      "author": "Financial Reporter",
+      "title": "July 'mini-boom' pushes house prices to record high: Halifax - Financial Reporter",
+      "description": "A 'mini-boom' in July has pushed average house prices to the highest seen since the Halifax house price index began, its latest data shows.",
+      "url": "https://www.financialreporter.co.uk/finance-news/july-mini-boom-pushes-house-prices-to-record-high-halifax.html",
+      "urlToImage": "https://www.financialreporter.co.uk/images/660x350/13930-shutterstock_55512751.jpg",
+      "publishedAt": "2020-08-07T07:57:12Z",
+      "content": "\"Following four months of decline, average house prices in July experienced their greatest month-on-month increase this year\"\r\nA 'mini-boom' in July has pushed average house prices to the highest see… [+2420 chars]"
+    },
+    {
+      "source": {
+        "id": "google-news",
+        "name": "Google News"
+      },
+      "author": null,
+      "title": "Sunak warns of travel 'disruption' risk - Sky News",
+      "description": null,
+      "url": "https://news.google.com/__i/rss/rd/articles/CBMiK2h0dHBzOi8vd3d3LnlvdXR1YmUuY29tL3dhdGNoP3Y9cGFrY0ZMUnZJbm_SAQA?oc=5",
+      "urlToImage": null,
+      "publishedAt": "2020-08-07T07:46:50Z",
+      "content": null
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "The Guardian"
+      },
+      "author": "Jillian Ambrose",
+      "title": "Energy bills to be cut by £84 for 11m UK households - The Guardian",
+      "description": "Ofgem will also lower cap for pre-payment energy meter customers by about £94 a year",
+      "url": "https://www.theguardian.com/money/2020/aug/07/energy-bills-to-be-cut-by-84-pounds-for-11m-uk-households-ofgem",
+      "urlToImage": "https://i.guim.co.uk/img/media/e627ff32a661ab70008525eed8dd3b6bfa394fd0/20_27_4224_2535/master/4224.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=fcd78f92cab611275ef6c43aaacab161",
+      "publishedAt": "2020-08-07T07:41:22Z",
+      "content": "The energy regulator has lowered winter energy bills for 15m UK homes by reducing its energy price cap to record lows after wholesale energy market prices tumbled during the coronavirus pandemic.\r\nOf… [+4351 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Evening Standard"
+      },
+      "author": "James Robson",
+      "title": "Man City XI vs Real Madrid: Confirmed early team news, predicted lineup, latest injuries for Champions League - Evening Standard",
+      "description": "",
+      "url": "https://www.standard.co.uk/sport/football/man-city-xi-vs-real-madrid-confirmed-early-team-news-predicted-lineup-latest-injuries-champions-a4518431.html",
+      "urlToImage": "https://static.standard.co.uk/s3fs-public/thumbnails/image/2020/08/06/15/mancityrealmadird060820c.png",
+      "publishedAt": "2020-08-07T07:16:00Z",
+      "content": "Sergio Aguero remains a doubt for the remainder of the Champions League if Manchester City overcome Real Madrid on this evening.\r\nThe Argentina striker is still recovering in Barcelona after undergoi… [+2435 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "PlanetF1"
+      },
+      "author": "",
+      "title": "Sebastian Vettel effectively rules out Mercedes as an option | PlanetF1 - PlanetF1",
+      "description": "Sebastian Vettel says Mercedes is not an option for him despite the team only confirming one driver for next year's championship.",
+      "url": "https://www.planetf1.com/news/sebastian-vettel-rules-out-mercedes/",
+      "urlToImage": "https://d3cm515ijfiu6w.cloudfront.net/wp-content/uploads/2020/08/07082748/Sebastian-Vettel-face-mask.jpg",
+      "publishedAt": "2020-08-07T06:29:23Z",
+      "content": "Sebastian Vettel says Mercedes is not an option for him despite the team only confirming one driver for next year’s championship.\r\nMercedes announced in the build up to the 70th Anniversary Grand Pri… [+2341 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Space.com"
+      },
+      "author": "Amy Thompson",
+      "title": "SpaceX launches 57 more Starlink satellites, lands rocket at sea - Space.com",
+      "description": "The internet megaconstellation continues to grow.",
+      "url": "https://www.space.com/spacex-starlink-launch-rocket-landing.html",
+      "urlToImage": "https://cdn.mos.cms.futurecdn.net/AFed4miyXc9PM4i7B77rr4-1200-80.jpg",
+      "publishedAt": "2020-08-07T06:01:00Z",
+      "content": "CAPE CANAVERAL, Fla. SpaceX\r\n successfully launched dozens of Starlink internet satellites\r\n and two small Earth-imaging satellites into orbit Friday (Aug. 7) in the second of what's expected to be a… [+8641 chars]"
+    },
+    {
+      "source": {
+        "id": null,
+        "name": "Sky.com"
+      },
+      "author": "Neville Lazarus",
+      "title": "Coronavirus: Record daily jump in infections takes India's COVID-19 cases above 2m - Sky News",
+      "description": "India has become the third worst-affected country in the world behind the United States and Brazil.",
+      "url": "https://news.sky.com/story/coronavirus-record-daily-jump-in-infections-take-indias-covid-19-cases-above-2m-12044101",
+      "urlToImage": "https://e3.365dm.com/20/08/1600x900/skynews-india-coronavirus-new-delhi_5060311.jpg?20200807062711",
+      "publishedAt": "2020-08-07T05:18:31Z",
+      "content": null
+    }
+  ]
+}

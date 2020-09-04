@@ -36,7 +36,7 @@ class NewssterRepository @Inject constructor(
         ).flow
     }
 
-    fun getArticle(id: String) = flow<Article> {
+    fun getArticle(id: String) = flow {
         val article = database.articleDao().getNewsById(id)
         emit(article)
     }.flowOn(Dispatchers.Default)
