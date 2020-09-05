@@ -10,7 +10,6 @@ import com.ersiver.newsster.utils.getOrAwaitValue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.hamcrest.CoreMatchers.`is`
-import org.hamcrest.CoreMatchers.notNullValue
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Before
 import org.junit.Rule
@@ -31,9 +30,7 @@ class ArticleViewModelTest {
 
     private lateinit var repository: NewssterRepository
     private lateinit var viewModel: ArticleViewModel
-
     private val article = TestUtil.createArticle()
-
     private val database = mock(NewssterDatabase::class.java, RETURNS_DEEP_STUBS)
     private val service = mock(NewssterService::class.java)
 
@@ -46,38 +43,32 @@ class ArticleViewModelTest {
     @Test
     fun fetchArticleTest() = runBlockingTest {
         `when`(database.articleDao().getNewsById("_testId")).thenReturn(article)
-
         viewModel.fetchArticle(id = "_testId")
 
-        assertThat(viewModel.articleLiveData.getOrAwaitValue().id, `is`(article.id))
-        assertThat(viewModel.articleLiveData.getOrAwaitValue().title, `is`(article.title))
-        assertThat(
-            viewModel.articleLiveData.getOrAwaitValue().description,
-            `is`(article.description)
-        )
-        assertThat(viewModel.articleLiveData.getOrAwaitValue().author, `is`(article.author))
-        assertThat(viewModel.articleLiveData.getOrAwaitValue().url, `is`(article.url))
-        assertThat(
-            viewModel.articleLiveData.getOrAwaitValue().source.name,
-            `is`(article.source.name)
-        )
-        assertThat(viewModel.articleLiveData.getOrAwaitValue().imgUrl, `is`(article.imgUrl))
-        assertThat(viewModel.articleLiveData.getOrAwaitValue().category, `is`(article.category))
-        assertThat(viewModel.articleLiveData.getOrAwaitValue().language, `is`(article.language))
-        assertThat(viewModel.articleLiveData.getOrAwaitValue().date, `is`(article.date))
+        val value = viewModel.articleLiveData.getOrAwaitValue()
+        assertThat(value.id, `is`(article.id))
+        assertThat(value.title, `is`(article.title))
+        assertThat(value.description, `is`(article.description))
+        assertThat(value.author, `is`(article.author))
+        assertThat(value.url, `is`(article.url))
+        assertThat(value.source.name, `is`(article.source.name))
+        assertThat(value.imgUrl, `is`(article.imgUrl))
+        assertThat(value.category, `is`(article.category))
+        assertThat(value.language, `is`(article.language))
+        assertThat(value.date, `is`(article.date))
     }
 
     @Test
     fun shareArticleTest() {
-        viewModel.shareArticle(article.id)
+        viewModel.shareArticle(article.url)
         val event = viewModel.shareArticleEvent.getOrAwaitValue()
-        assertThat(event.getContentIfNotHandled(), `is`(notNullValue()))
+        assertThat(event.getContentIfNotHandled(), `is`(article.url))
     }
 
     @Test
     fun openWebsiteTest() {
         viewModel.openWebsite(article.url)
         val event = viewModel.openWebsiteEvent.getOrAwaitValue()
-        assertThat(event.getContentIfNotHandled(), `is`(notNullValue()))
+        assertThat(event.getContentIfNotHandled(), `is`(article.url))
     }
 }

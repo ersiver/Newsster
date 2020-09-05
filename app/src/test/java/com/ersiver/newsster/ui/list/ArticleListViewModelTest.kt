@@ -4,19 +4,20 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.SavedStateHandle
 import androidx.paging.ExperimentalPagingApi
 import com.ersiver.newsster.MainCoroutinesRule
-import com.ersiver.newsster.api.NewssterService
-import com.ersiver.newsster.db.NewssterDatabase
 import com.ersiver.newsster.repository.NewssterRepository
 import com.ersiver.newsster.utils.TestUtil
 import com.ersiver.newsster.utils.getOrAwaitValue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.hamcrest.CoreMatchers.`is`
-import org.hamcrest.CoreMatchers.notNullValue
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.mockito.Mockito
+
+/**
+ * Unit tests for the implementation of [ArticleListViewModel]
+ */
 
 @ExperimentalCoroutinesApi
 @ExperimentalPagingApi
@@ -29,15 +30,11 @@ class ArticleListViewModelTest {
 
     private lateinit var repository: NewssterRepository
     private lateinit var viewModel: ArticleListViewModel
-
     private val article = TestUtil.createArticle()
-
-    private val database = Mockito.mock(NewssterDatabase::class.java, Mockito.RETURNS_DEEP_STUBS)
-    private val service = Mockito.mock(NewssterService::class.java)
 
     @Before
     fun setUp() {
-        repository = NewssterRepository(service, database)
+        repository = Mockito.mock(NewssterRepository::class.java)
         viewModel = ArticleListViewModel(repository, SavedStateHandle())
     }
 
@@ -47,7 +44,7 @@ class ArticleListViewModelTest {
         val event = viewModel.navigateToArticleEvent.getOrAwaitValue()
         assertThat(
             event.getContentIfNotHandled(),
-            `is`(notNullValue())
+            `is`(article)
         )
     }
 
@@ -60,7 +57,7 @@ class ArticleListViewModelTest {
 
     @Test
     fun updateLanguageTest() {
-        viewModel.updateCategory("gb")
+        viewModel.updateLanguage("gb")
         val value = viewModel.languageLiveData.getOrAwaitValue()
         assertThat(value, `is`("gb"))
     }
