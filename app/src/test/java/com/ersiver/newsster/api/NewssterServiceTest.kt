@@ -19,7 +19,7 @@ class NewssterServiceTest : ApiAbstract<NewssterService>() {
     @get: Rule
     val instantExecutorRule = InstantTaskExecutorRule()
 
-    lateinit var service: NewssterService
+    private lateinit var service: NewssterService
 
     @Before
     fun initService() {
@@ -34,29 +34,27 @@ class NewssterServiceTest : ApiAbstract<NewssterService>() {
         val responseBody = requireNotNull(response.articleDTO)
         mockWebServer.takeRequest()
 
+        val loaded = responseBody[0]
         assertThat(responseBody.count(), `is`(20))
-        assertThat(responseBody[0].author, `is`("https://www.facebook.com/bbcnews"))
+        assertThat(loaded.author, `is`("https://www.facebook.com/bbcnews"))
         assertThat(
-            responseBody[0].title,
+            loaded.title,
             `is`("I'm A Celebrity will swap jungle for ruined British castle.")
         )
+        assertThat(loaded.url, `is`("https://www.bbc.co.uk/news/entertainment-arts-53693651"))
         assertThat(
-            responseBody[0].url,
-            `is`("https://www.bbc.co.uk/news/entertainment-arts-53693651")
-        )
-        assertThat(
-            responseBody[0].imgUrl,
+            loaded.imgUrl,
             `is`("https://ichef.bbci.co.uk/news/1024/branded_news/FA36/production/_113845046_jossa_shutterstock_2.jpg")
         )
         assertThat(
-            responseBody[0].description,
+            loaded.description,
             `is`("The reality show will swap the Australian jungle for a ruined British castle for this year's series.")
         )
-        assertThat(responseBody[0].date, `is`("2020-08-07T10:18:03Z"))
+        assertThat(loaded.date, `is`("2020-08-07T10:18:03Z"))
         assertThat(
-            responseBody[0].content,
+            loaded.content,
             `is`("Image copyrightITV/ShutterstockImage caption Jacqueline Jossa doing a bush tucker trial on her way to winning the 2019 series [+2602 chars]")
         )
-        assertThat(responseBody[0].source.name, `is`("BBC News"))
+        assertThat(loaded.source.name, `is`("BBC News"))
     }
 }
