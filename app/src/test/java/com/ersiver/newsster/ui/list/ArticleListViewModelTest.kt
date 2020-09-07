@@ -70,7 +70,7 @@ class ArticleListViewModelTest {
     }
 
     @Test
-    fun saveLanguageGetSavedLanguage(){
+    fun saveLanguageGetSavedLanguage() {
         viewModel.saveLanguageFiltering("gb")
         val value = viewModel.getLastSavedLanguage()
         assertThat(value, `is`("gb"))
