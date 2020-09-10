@@ -27,12 +27,8 @@ import com.ersiver.newsster.util.*
 class ArticleFragment : Fragment() {
     @VisibleForTesting
     private val articleViewModel by viewModels<ArticleViewModel>()
-
     private val args: ArticleFragmentArgs by navArgs()
-
-    private val article: Article by lazy {
-        args.selectedArticle
-    }
+    private val article: Article by lazy { args.selectedArticle }
     private var _binding: ArticleFragmentBinding? = null
     private val binding get() = _binding!!
 
@@ -62,6 +58,21 @@ class ArticleFragment : Fragment() {
         return binding.root
     }
 
+    private fun setupActionBarWithNavController() {
+        val navController = findNavController()
+        val appBarConfiguration = AppBarConfiguration(navController.graph)
+
+        binding.apply {
+            toolbar.setupWithNavController(navController, appBarConfiguration)
+            toolbar.setTitle(R.string.app_name)
+            toolbar.setOnMenuItemClickListener {
+                if (it.itemId == R.id.share)
+                    articleViewModel.shareArticle(this@ArticleFragment.article.id)
+                true
+            }
+        }
+    }
+
     private fun setupOpenWebsiteButton() {
         binding.article.openWebsite.setOnClickListener {
             articleViewModel.openWebsite(article.url)
@@ -77,21 +88,6 @@ class ArticleFragment : Fragment() {
             article.date.loadOrGone(selectedArticle.date.formatDate())
             article.source.loadOrGone(selectedArticle.source.name)
             Glide.with(requireContext()).load(selectedArticle.imgUrl).into(articleImage)
-        }
-    }
-
-    private fun setupActionBarWithNavController() {
-        val navController = findNavController()
-        val appBarConfiguration = AppBarConfiguration(navController.graph)
-
-        binding.apply {
-            toolbar.setupWithNavController(navController, appBarConfiguration)
-            toolbar.setTitle(R.string.app_name)
-            toolbar.setOnMenuItemClickListener {
-                if (it.itemId == R.id.share)
-                    articleViewModel.shareArticle(this@ArticleFragment.article.id)
-                true
-            }
         }
     }
 

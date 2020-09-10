@@ -36,14 +36,12 @@ class ArticleListFragment : Fragment() {
     @VisibleForTesting
     private val viewModel by viewModels<ArticleListViewModel>()
     private var job: Job? = null
-
-    private var _binding: ArticleListFragmentBinding? = null
-    private val binding
-        get() = _binding!!
-
     private lateinit var adapter: ArticleAdapter
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var toolbar: Toolbar
+    private var _binding: ArticleListFragmentBinding? = null
+    private val binding
+        get() = _binding!!
 
     override
     fun onCreateView(
@@ -97,9 +95,16 @@ class ArticleListFragment : Fragment() {
         }
     }
 
-    private fun scrollToTopWhenRefreshed(loadState: CombinedLoadStates) {
-        if (loadState.refresh == LoadState.Loading)
-            binding.articleList.scrollToPosition(0)
+    private fun setupNavigationToArticle() {
+        viewModel.navigateToArticleEvent.observe(
+            viewLifecycleOwner,
+            EventObserver { article ->
+                val action =
+                    ArticleListFragmentDirections.actionArticleListFragmentToArticleFragment(
+                        article
+                    )
+                this.findNavController().navigate(action)
+            })
     }
 
     private fun getNewsAndNotifyAdapter() {
@@ -109,6 +114,15 @@ class ArticleListFragment : Fragment() {
                 adapter.submitData(it)
             }
         }
+    }
+
+    private fun updateToolbarTitle(category: String) {
+        toolbar.title = resources.getString(R.string.app_name) + " $category"
+    }
+
+    private fun scrollToTopWhenRefreshed(loadState: CombinedLoadStates) {
+        if (loadState.refresh == LoadState.Loading)
+            binding.articleList.scrollToPosition(0)
     }
 
     private fun manageErrors(loadState: CombinedLoadStates) {
@@ -145,18 +159,6 @@ class ArticleListFragment : Fragment() {
         )
     }
 
-    private fun setupNavigationToArticle() {
-        viewModel.navigateToArticleEvent.observe(
-            viewLifecycleOwner,
-            EventObserver { article ->
-                val action =
-                    ArticleListFragmentDirections.actionArticleListFragmentToArticleFragment(
-                        article
-                    )
-                this.findNavController().navigate(action)
-            })
-    }
-
     private fun displayCategoriesPicker() {
         val items = resources.getStringArray(R.array.categories_titles)
         val itemsValue = resources.getStringArray(R.array.categories_values)
@@ -170,10 +172,6 @@ class ArticleListFragment : Fragment() {
                 viewModel.updateCategory(category)
             }
             .show()
-    }
-
-    private fun updateToolbarTitle(category: String) {
-        toolbar.title = resources.getString(R.string.app_name) + " $category"
     }
 
     override fun onDestroy() {
