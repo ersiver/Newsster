@@ -32,7 +32,8 @@ Newsster is a demo application that uses MVVM pattern and Android Jetpack: the P
   
 ## Testing 
 ###  Device Tests:
-  - <b>Database Testing</b> - The project creates an in memory database for each database test but still runs them on the device. 
+  - <b>App Navigation Test</b> - Navigation between screens is tested using Espresso UI framework and ActivityScenario for lifecycle state. <b>Hilt</b> provides test version of Repository. This is done with use of a <b>CustomTestRunner</b> that uses an Application configured with Hilt. 
+  - <b>Database Testing</b> - The project creates an in memory database for each database test but still runs them on the device.
 ### Local Unit Tests:
   - <b>Webservice Tests</b> - The project uses MockWebServer project to test REST api interactions.
   - <b>ViewModel Tests</b> - ViewModels are tested using local unit tests with mock Repository implementations.
