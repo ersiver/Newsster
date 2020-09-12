@@ -19,9 +19,8 @@ import org.mockito.Mockito.`when`
 import org.mockito.Mockito.mock
 
 /**
- * Unit tests for the implementation of [ArticleListViewModel]
+ * Unit tests for the implementation of [NewssterRepository]
  */
-
 @ExperimentalCoroutinesApi
 class NewssterRepositoryTest {
     @get:Rule
