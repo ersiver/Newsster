@@ -63,11 +63,6 @@ class ArticleListViewModel @ViewModelInject constructor(
                 || language != getLastSavedLanguage()
     }
 
-    private fun shouldRefresh(category: String): Boolean {
-        return category != getLastSavedCategory()
-
-    }
-
      fun getLastSavedCategory() = savedStateHandle
         .getLiveData<String>(
             SAVED_STATE_CATEGORY
