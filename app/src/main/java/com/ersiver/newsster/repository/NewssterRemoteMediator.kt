@@ -26,8 +26,8 @@ class NewssterRemoteMediator @Inject constructor(
     private val database: NewssterDatabase
 ) : RemoteMediator<Int, Article>() {
 
-    val remoteKeyDao = database.remoteKeyDao()
-    val articleDao = database.articleDao()
+    private val remoteKeyDao = database.remoteKeyDao()
+    private val articleDao = database.articleDao()
 
     override suspend fun load(
         loadType: LoadType,
