@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/home_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:paddingStart="12dp"

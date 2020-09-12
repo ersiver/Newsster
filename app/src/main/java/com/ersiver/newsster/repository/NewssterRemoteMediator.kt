@@ -7,6 +7,7 @@ import com.ersiver.newsster.api.asModel
 import com.ersiver.newsster.db.NewssterDatabase
 import com.ersiver.newsster.db.RemoteKey
 import com.ersiver.newsster.model.Article
+import com.ersiver.newsster.util.wrapEspressoIdlingResource
 import retrofit2.HttpException
 import timber.log.Timber
 import java.io.IOException
@@ -33,6 +34,7 @@ class NewssterRemoteMediator @Inject constructor(
         loadType: LoadType,
         state: PagingState<Int, Article>
     ): MediatorResult {
+
 
         try {
             val loadKey: Int = when (loadType) {

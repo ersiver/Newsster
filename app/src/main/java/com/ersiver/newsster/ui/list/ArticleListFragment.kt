@@ -33,7 +33,6 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 @ExperimentalPagingApi
 class ArticleListFragment : Fragment() {
-    @VisibleForTesting
     private val viewModel by viewModels<ArticleListViewModel>()
     private var job: Job? = null
     private lateinit var adapter: ArticleAdapter
@@ -49,7 +48,7 @@ class ArticleListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = ArticleListFragmentBinding.inflate(inflater, container, false)
-        toolbar = binding.toolbar
+        toolbar = binding.homeToolbar
 
         getPrefs()
         initAdapter()
