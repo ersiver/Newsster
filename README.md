@@ -25,18 +25,19 @@ Newsster is a demo application that uses MVVM pattern and Android Jetpack: the P
   - Retrofit2 & OkHttp3 - to make REST requests to the web service integrated.
   - Moshi to handle the deserialization of the returned JSON to Kotlin data objects.
   - Timber for logs.
-  
-### Testing:  
-####  Device Tests
-  - <b>Database Testing</b> - The project creates an in memory database for each database test but still runs them on the device. 
-#### Local Unit Tests
-  - <b>Webservice Tests</b> - The project uses MockWebServer project to test REST api interactions.
-  - <b>ViewModel Tests</b> - ViewModels are tested using local unit tests with mock Repository implementations.
-  
-  
+ 
 ### Architecture:
   - MVVM Architecture 
   - Repository pattern
+  
+## Testing 
+###  Device Tests:
+  - <b>Database Testing</b> - The project creates an in memory database for each database test but still runs them on the device. 
+### Local Unit Tests:
+  - <b>Webservice Tests</b> - The project uses MockWebServer project to test REST api interactions.
+  - <b>ViewModel Tests</b> - ViewModels are tested using local unit tests with mock Repository implementations.
+  - <b>Repository Tests</b> - Repository is tested using local unit tests with mock versions of Service and Database.
+
   
 ## Design
 + Newsster is built with Material Components for Android.
