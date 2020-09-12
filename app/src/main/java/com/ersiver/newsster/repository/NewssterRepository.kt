@@ -7,7 +7,6 @@ import androidx.paging.PagingData
 import com.ersiver.newsster.api.NewssterService
 import com.ersiver.newsster.db.NewssterDatabase
 import com.ersiver.newsster.model.Article
-import com.ersiver.newsster.util.wrapEspressoIdlingResource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
