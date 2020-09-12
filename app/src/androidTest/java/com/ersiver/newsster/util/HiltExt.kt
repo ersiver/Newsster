@@ -1,4 +1,4 @@
-package com.ersiver.newsster
+package com.ersiver.newsster.util
 
 import android.content.ComponentName
 import android.content.Intent
@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.testing.FragmentScenario
 import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.ApplicationProvider
+import com.ersiver.newsster.HiltTestActivity
+import com.ersiver.newsster.R
 
 
 /**
@@ -40,6 +42,7 @@ inline fun <reified T : Fragment> launchFragmentInHiltContainer(
             T::class.java.name
         )
         fragment.arguments = fragmentArgs
+
         activity.supportFragmentManager
             .beginTransaction()
             .add(android.R.id.content, fragment, "")
@@ -47,4 +50,5 @@ inline fun <reified T : Fragment> launchFragmentInHiltContainer(
 
         fragment.action()
     }
+
 }
