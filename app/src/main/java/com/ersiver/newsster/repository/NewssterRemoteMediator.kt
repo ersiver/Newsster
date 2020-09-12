@@ -34,8 +34,6 @@ class NewssterRemoteMediator @Inject constructor(
         loadType: LoadType,
         state: PagingState<Int, Article>
     ): MediatorResult {
-
-
         try {
             val loadKey: Int = when (loadType) {
                 LoadType.REFRESH -> {
@@ -66,7 +64,6 @@ class NewssterRemoteMediator @Inject constructor(
                     if (remoteKey == null || remoteKey.nextKey == null) {
                         throw InvalidObjectException("Something went wrong")
                     }
-
                     remoteKey.nextKey
                 }
             }
@@ -144,4 +141,3 @@ class NewssterRemoteMediator @Inject constructor(
         private const val STARTING_PAGE = 1
     }
 }
-
