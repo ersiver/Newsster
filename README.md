@@ -32,7 +32,7 @@ Newsster is a demo application that uses MVVM pattern and Android Jetpack: the P
   
 ## Testing 
 ###  Device Tests:
-  - <b>App Navigation Test</b> - Navigation between screens is tested using Espresso UI framework and ActivityScenario for lifecycle state. <b>Hilt</b> provides test version of Repository. This is done with use of a <b>CustomTestRunner</b> that uses an Application configured with Hilt. 
+  - <b>App Navigation Test</b> - Navigation between screens is tested using Espresso UI framework and ActivityScenario for lifecycle state. `Hilt` provides test version of Repository. This is done with use of a `CustomTestRunner` that uses an Application configured with Hilt. 
   - <b>Database Testing</b> - The project creates an in memory database for each database test but still runs them on the device.
 ### Local Unit Tests:
   - <b>Webservice Tests</b> - The project uses MockWebServer project to test REST api interactions.
@@ -59,4 +59,4 @@ Newsster is a demo application that uses MVVM pattern and Android Jetpack: the P
 <img src="/previews/screenshot_4.png" width="33%"/> <img src="/previews/screenshot_5.png" width="33%"/>                                        
 
 ## Open API
-Newsster uses the [NewsApi] for constructing RESTful API. Obtain your free API_KEY: https://newsapi.org/register and paste it to the Constants file to try the app.
+Newsster uses the NewsApi for constructing RESTful API. Obtain your free API_KEY [NewsApi](https://newsapi.org/register) and paste it to the Constants file to try the app.
