@@ -27,17 +27,13 @@ class NewssterRepository @Inject constructor(
 
     @ExperimentalPagingApi
    fun fetchArticles(language: String, category: String): Flow<PagingData<Article>> {
-        // For tests set app as busy while this function executes.
-        wrapEspressoIdlingResource {
             val pagingSourceFactory =
                 { database.articleDao().getNews(language, category) }
-
             return Pager(
                 config = PagingConfig(NETWORK_PAGE_SIZE, maxSize = 300, enablePlaceholders = true),
                 remoteMediator = NewssterRemoteMediator(language, category, service, database),
                 pagingSourceFactory = pagingSourceFactory
             ).flow
-        }
     }
 
     fun getArticle(id: String) = flow {
