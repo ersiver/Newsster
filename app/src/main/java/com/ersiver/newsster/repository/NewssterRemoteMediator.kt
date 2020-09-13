@@ -48,6 +48,7 @@ class NewssterRemoteMediator @Inject constructor(
                     remoteKey.prevKey ?: return MediatorResult.Success(endOfPaginationReached = true)
                     remoteKey.prevKey
                 }
+
                 LoadType.APPEND -> {
                     Timber.i("APPEND")
 
