@@ -13,7 +13,6 @@ import java.io.IOException
 import java.io.InvalidObjectException
 import javax.inject.Inject
 
-
 /**
  * RemoteMediator for a DB + Network based PagingData stream, which
  * triggers network requests to fetch additional items when a user
@@ -46,7 +45,6 @@ class NewssterRemoteMediator @Inject constructor(
                     Timber.i("PREPEND")
                     val remoteKey = getRemoteKeyForFirstItem(state)
                         ?: throw InvalidObjectException("Something went wrong.")
-
                     remoteKey.prevKey ?: return MediatorResult.Success(endOfPaginationReached = true)
                     remoteKey.prevKey
                 }
@@ -54,10 +52,8 @@ class NewssterRemoteMediator @Inject constructor(
                     Timber.i("APPEND")
 
                     val remoteKey = getRemoteKeyForLastItem(state)
-
-                    if (remoteKey?.nextKey == null) {
+                    if (remoteKey?.nextKey == null)
                         throw InvalidObjectException("Something went wrong")
-                    }
                     remoteKey.nextKey
                 }
             }
