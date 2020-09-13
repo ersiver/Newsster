@@ -2,7 +2,7 @@ package com.ersiver.newsster
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.app.AppCompatDelegate.*
 import androidx.preference.PreferenceManager
 import com.ersiver.newsster.databinding.ActivityMainBinding
 import com.ersiver.newsster.util.PREF_MODE_KEY
@@ -32,9 +32,6 @@ class MainActivity : AppCompatActivity() {
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
 
         val isNightMode = sharedPreferences.getBoolean(PREF_MODE_KEY, false)
-        if (isNightMode)
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        else
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        setDefaultNightMode(if (isNightMode) MODE_NIGHT_YES else MODE_NIGHT_NO)
     }
 }

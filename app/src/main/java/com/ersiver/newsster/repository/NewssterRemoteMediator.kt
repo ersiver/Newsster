@@ -7,7 +7,6 @@ import com.ersiver.newsster.api.asModel
 import com.ersiver.newsster.db.NewssterDatabase
 import com.ersiver.newsster.db.RemoteKey
 import com.ersiver.newsster.model.Article
-import com.ersiver.newsster.util.wrapEspressoIdlingResource
 import retrofit2.HttpException
 import timber.log.Timber
 import java.io.IOException
@@ -45,15 +44,9 @@ class NewssterRemoteMediator @Inject constructor(
                 LoadType.PREPEND -> {
                     Timber.i("PREPEND")
                     val remoteKey = getRemoteKeyForFirstItem(state)
+                        ?: throw InvalidObjectException("Something went wrong.")
 
-                    if (remoteKey == null) {
-                        throw InvalidObjectException("Something went wrong.")
-                    }
-
-                    val prevKey = remoteKey.prevKey
-                    if (prevKey == null) {
-                        return MediatorResult.Success(endOfPaginationReached = true)
-                    }
+                    remoteKey.prevKey ?: return MediatorResult.Success(endOfPaginationReached = true)
                     remoteKey.prevKey
                 }
                 LoadType.APPEND -> {
@@ -61,7 +54,7 @@ class NewssterRemoteMediator @Inject constructor(
 
                     val remoteKey = getRemoteKeyForLastItem(state)
 
-                    if (remoteKey == null || remoteKey.nextKey == null) {
+                    if (remoteKey?.nextKey == null) {
                         throw InvalidObjectException("Something went wrong")
                     }
                     remoteKey.nextKey
