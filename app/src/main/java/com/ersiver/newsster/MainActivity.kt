@@ -17,9 +17,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         /**
-         * Ensures that the SharedPreferences file is
-         * properly initialized with the default values
-         * when this method is called for the first time.
+         * Ensures that the SharedPreferences file is properly initialized with
+         * the default values when this method is called for the first time.
          */
         PreferenceManager.setDefaultValues(this, R.xml.root_preferences, false)
         setupMode()
