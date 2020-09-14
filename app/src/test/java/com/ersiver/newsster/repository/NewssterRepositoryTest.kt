@@ -5,7 +5,6 @@ import com.ersiver.newsster.MainCoroutinesRule
 import com.ersiver.newsster.api.NewssterService
 import com.ersiver.newsster.db.ArticleDao
 import com.ersiver.newsster.db.NewssterDatabase
-import com.ersiver.newsster.ui.list.ArticleListViewModel
 import com.ersiver.newsster.utils.TestUtil
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
