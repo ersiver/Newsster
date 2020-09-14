@@ -5,9 +5,7 @@ import android.view.View
 import androidx.appcompat.widget.MenuPopupWindow
 import androidx.paging.ExperimentalPagingApi
 import androidx.test.core.app.ApplicationProvider
-import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.*
-import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.RootMatchers
@@ -16,20 +14,15 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
 import com.ersiver.newsster.R
 import com.ersiver.newsster.di.RepositoryModule
-import com.ersiver.newsster.repository.NewssterRepository
-import com.ersiver.newsster.util.EspressoIdlingResource
 import com.ersiver.newsster.util.launchFragmentInHiltContainer
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.UninstallModules
 import org.hamcrest.CoreMatchers
 import org.hamcrest.CoreMatchers.instanceOf
-import org.junit.After
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import javax.inject.Inject
 
 @MediumTest
 @ExperimentalPagingApi
