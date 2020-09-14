@@ -4,6 +4,7 @@ import android.view.View
 import androidx.appcompat.widget.MenuPopupWindow.MenuDropDownListView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
+import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso.*
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.doesNotExist
@@ -21,6 +22,7 @@ import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.UninstallModules
 import org.hamcrest.CoreMatchers
 import org.hamcrest.CoreMatchers.anything
+import org.hamcrest.CoreMatchers.instanceOf
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -56,11 +58,13 @@ class AppNavigationTest {
         //Start up list screen.
         val activityScenario = ActivityScenario.launch(MainActivity::class.java)
 
-        //Reveal overflow menu and press the setting item.
-        openActionBarOverflowOrOptionsMenu(getInstrumentation().targetContext)
+        //Open the the overflow menu.
+        openActionBarOverflowOrOptionsMenu(ApplicationProvider.getApplicationContext())
+
+        //Click the item.
         onData(anything())
             .inRoot(RootMatchers.isPlatformPopup())
-            .inAdapterView(CoreMatchers.instanceOf<View>(MenuDropDownListView::class.java))
+            .inAdapterView(instanceOf<View>(MenuDropDownListView::class.java))
             .atPosition(0) // for the first submenu item, here: settings
             .perform(click())
 
@@ -125,13 +129,15 @@ class AppNavigationTest {
         //Start up list screen.
         val activityScenario = ActivityScenario.launch(MainActivity::class.java)
 
-        //Navigate to settings and press back button.
-        openActionBarOverflowOrOptionsMenu(getInstrumentation().targetContext)
+        //Navigate to settings
+        openActionBarOverflowOrOptionsMenu(ApplicationProvider.getApplicationContext())
         onData(anything())
             .inRoot(RootMatchers.isPlatformPopup())
-            .inAdapterView(CoreMatchers.instanceOf<View>(MenuDropDownListView::class.java))
+            .inAdapterView(instanceOf<View>(MenuDropDownListView::class.java))
             .atPosition(0) // for the first submenu item, here: settings
             .perform(click())
+
+        //In Settings fragment click back btn.
         pressBack()
 
         //Verify navigation to list screen
@@ -140,4 +146,3 @@ class AppNavigationTest {
         activityScenario.close()
     }
 }
-
