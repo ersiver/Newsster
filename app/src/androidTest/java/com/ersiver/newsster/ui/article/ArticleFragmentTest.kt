@@ -36,7 +36,7 @@ class ArticleFragmentTest {
      * launches, the Article is present.
      */
     @Test
-    fun t() {
-        launchFragmentInHiltContainer<ArticleFragment>(Bundle(), R.style.NewssterTheme)
+    fun test() {
+       //TODO
     }
 }

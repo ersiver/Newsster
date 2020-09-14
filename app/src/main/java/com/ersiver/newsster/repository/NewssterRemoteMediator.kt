@@ -1,13 +1,15 @@
 package com.ersiver.newsster.repository
 
-import androidx.paging.*
+import androidx.paging.ExperimentalPagingApi
+import androidx.paging.LoadType
+import androidx.paging.PagingState
+import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
 import com.ersiver.newsster.api.NewssterService
 import com.ersiver.newsster.api.asModel
 import com.ersiver.newsster.db.NewssterDatabase
 import com.ersiver.newsster.db.RemoteKey
 import com.ersiver.newsster.model.Article
-import com.ersiver.newsster.util.wrapEspressoIdlingResource
 import retrofit2.HttpException
 import timber.log.Timber
 import java.io.IOException
@@ -34,38 +36,37 @@ class NewssterRemoteMediator @Inject constructor(
         loadType: LoadType,
         state: PagingState<Int, Article>
     ): MediatorResult {
-        wrapEspressoIdlingResource {
-            try {
-                val loadKey: Int = when (loadType) {
-                    LoadType.REFRESH -> {
-                        Timber.i("REFRESH")
-                        val remoteKeys = getRemoteKeyClosestToCurrentPosition(state)
-                        remoteKeys?.nextKey?.minus(1) ?: STARTING_PAGE
-                    }
-
-                    LoadType.PREPEND -> {
-                        Timber.i("PREPEND")
-                        val remoteKey = getRemoteKeyForFirstItem(state)
-                            ?: throw InvalidObjectException("Something went wrong.")
-                        remoteKey.prevKey
-                            ?: return MediatorResult.Success(endOfPaginationReached = true)
-                        remoteKey.prevKey
-                    }
-
-                    LoadType.APPEND -> {
-                        Timber.i("APPEND")
-
-                        val remoteKey = getRemoteKeyForLastItem(state)
-                        if (remoteKey?.nextKey == null)
-                            throw InvalidObjectException("Something went wrong")
-                        remoteKey.nextKey
-                    }
+        try {
+            val loadKey: Int = when (loadType) {
+                LoadType.REFRESH -> {
+                    Timber.i("REFRESH")
+                    val remoteKeys = getRemoteKeyClosestToCurrentPosition(state)
+                    remoteKeys?.nextKey?.minus(1) ?: STARTING_PAGE
                 }
 
-                // Suspending network load via Retrofit. This doesn't need to
-                // be wrapped in a withContext(Dispatcher.IO) { ... } block
-                // since Retrofit's Coroutine CallAdapter dispatches on a
-                // worker thread.
+                LoadType.PREPEND -> {
+                    Timber.i("PREPEND")
+                    val remoteKey = getRemoteKeyForFirstItem(state)
+                        ?: throw InvalidObjectException("Something went wrong.")
+                    remoteKey.prevKey
+                        ?: return MediatorResult.Success(endOfPaginationReached = true)
+                    remoteKey.prevKey
+                }
+
+                LoadType.APPEND -> {
+                    Timber.i("APPEND")
+
+                    val remoteKey = getRemoteKeyForLastItem(state)
+                    if (remoteKey?.nextKey == null)
+                        throw InvalidObjectException("Something went wrong")
+                    remoteKey.nextKey
+                }
+            }
+
+            // Suspending network load via Retrofit. This doesn't need to
+            // be wrapped in a withContext(Dispatcher.IO) { ... } block
+            // since Retrofit's Coroutine CallAdapter dispatches on a
+            // worker thread.
                 val apiResponse = service.getNews(
                     country = language,
                     category = category,
@@ -97,12 +98,12 @@ class NewssterRemoteMediator @Inject constructor(
                     articleDao.insertAll(news)
                     remoteKeyDao.insertAll(keys)
                 }
+
                 return MediatorResult.Success(endOfPaginationReached = endOfPaginationReached)
-            } catch (e: IOException) {
-                return MediatorResult.Error(e)
-            } catch (e: HttpException) {
-                return MediatorResult.Error(e)
-            }
+        } catch (e: IOException) {
+            return MediatorResult.Error(e)
+        } catch (e: HttpException) {
+            return MediatorResult.Error(e)
         }
     }
 
