@@ -32,7 +32,8 @@ Newsster is a demo application that uses MVVM pattern and Android Jetpack: the P
   
 ## Testing 
 ###  Device Tests:
-  - <b>App Navigation Test</b> - Navigation between screens is tested using Espresso UI framework and ActivityScenario for lifecycle state. `Hilt` provides test version of Repository. This is done with use of a `CustomTestRunner` that uses an Application configured with Hilt. 
+  - <b>App Navigation Test</b> - Navigation between screens is tested using Espresso UI framework and ActivityScenario for lifecycle state. `Hilt` provides test version of Repository and automatically generates a new set of components for each test. This is done with use of a `CustomTestRunner` that uses an Application configured with Hilt.
+  - <b>Fragment Tests</b> - Fragments are tested using Espresso UI framework. Since it's not possible to use `launchFragmentInContainer` from the androidx.fragment:fragment-testing library with Hilt, the `launchFragmentInHiltContainer` was used as a workaround.
   - <b>Database Testing</b> - The project creates an in memory database for each database test but still runs them on the device.
 ### Local Unit Tests:
   - <b>Webservice Tests</b> - The project uses MockWebServer project to test REST api interactions.
