@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso.*
+import androidx.test.espresso.IdlingRegistry
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.doesNotExist
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -14,21 +15,20 @@ import androidx.test.espresso.matcher.RootMatchers
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
-import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import com.ersiver.newsster.di.RepositoryModule
 import com.ersiver.newsster.repository.NewssterRepository
+import com.ersiver.newsster.util.EspressoUriIdlingResource
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.UninstallModules
-import org.hamcrest.CoreMatchers
 import org.hamcrest.CoreMatchers.anything
 import org.hamcrest.CoreMatchers.instanceOf
+import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import javax.inject.Inject
-
 
 /**
  * Large instrumented test for navigation between screens.
@@ -47,6 +47,16 @@ class AppNavigationTest {
     @Before
     fun setUp() {
         hiltRule.inject()
+    }
+
+    @Before
+    fun registerIdlingResource(){
+        IdlingRegistry.getInstance().register(EspressoUriIdlingResource.uriIdlingResource)
+    }
+
+    @After
+    fun unregisterIdlingResource(){
+        IdlingRegistry.getInstance().unregister(EspressoUriIdlingResource.uriIdlingResource)
     }
 
     /**
@@ -84,7 +94,6 @@ class AppNavigationTest {
     fun homScreen_clickOnListItem_navigateToArticle() {
         //Start up list screen.
         val activityScenario = ActivityScenario.launch(MainActivity::class.java)
-        Thread.sleep(2000)
 
         //Click on the first article on the list.
         onView(withId(R.id.article_list))
@@ -107,7 +116,6 @@ class AppNavigationTest {
     fun articleFragment_upButton_navigateToHomeScreen() {
         //Start up list screen.
         val activityScenario = ActivityScenario.launch(MainActivity::class.java)
-        Thread.sleep(2000)
 
         //Navigate to Article and click UpButton.
         onView(withId(R.id.article_list))

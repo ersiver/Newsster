@@ -5,11 +5,13 @@ import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
+import com.ersiver.newsster.api.NewssterResponse
 import com.ersiver.newsster.api.NewssterService
 import com.ersiver.newsster.api.asModel
 import com.ersiver.newsster.db.NewssterDatabase
 import com.ersiver.newsster.db.RemoteKey
 import com.ersiver.newsster.model.Article
+import com.ersiver.newsster.util.EspressoUriIdlingResource
 import retrofit2.HttpException
 import timber.log.Timber
 import java.io.IOException
@@ -67,43 +69,56 @@ class NewssterRemoteMediator @Inject constructor(
             // be wrapped in a withContext(Dispatcher.IO) { ... } block
             // since Retrofit's Coroutine CallAdapter dispatches on a
             // worker thread.
-                val apiResponse = service.getNews(
-                    country = language,
-                    category = category,
-                    page = loadKey,
-                    pageSize = state.config.pageSize
-                )
-                val news = apiResponse.asModel()
-                val endOfPaginationReached = news.isEmpty()
+            val apiResponse = newssterResponse(loadKey, state)
+            val news = apiResponse.asModel()
+            val endOfPaginationReached = news.isEmpty()
 
-                // Store loaded data, and next key in transaction, so that
-                // they're always consistent.
-                database.withTransaction {
-                    if (loadType == LoadType.REFRESH) {
-                        remoteKeyDao.clearRemoteKeys()
-                        articleDao.clearNews()
-                    }
-
-                    val prevKey = if (loadKey == STARTING_PAGE) null else loadKey - 1
-                    val nextKey = if (endOfPaginationReached) null else loadKey + 1
-                    val keys = news.map { article ->
-                        RemoteKey(articleId = article.id, nextKey = nextKey, prevKey = prevKey)
-                    }
-
-                    for (article in news) {
-                        article.language = language
-                        article.category = category
-                    }
-
-                    articleDao.insertAll(news)
-                    remoteKeyDao.insertAll(keys)
+            // Store loaded data, and next key in transaction, so that
+            // they're always consistent.
+            database.withTransaction {
+                if (loadType == LoadType.REFRESH) {
+                    remoteKeyDao.clearRemoteKeys()
+                    articleDao.clearNews()
                 }
 
-                return MediatorResult.Success(endOfPaginationReached = endOfPaginationReached)
+                val prevKey = if (loadKey == STARTING_PAGE) null else loadKey - 1
+                val nextKey = if (endOfPaginationReached) null else loadKey + 1
+                val keys = news.map { article ->
+                    RemoteKey(articleId = article.id, nextKey = nextKey, prevKey = prevKey)
+                }
+
+                for (article in news) {
+                    article.language = language
+                    article.category = category
+                }
+
+                articleDao.insertAll(news)
+                remoteKeyDao.insertAll(keys)
+            }
+
+            return MediatorResult.Success(endOfPaginationReached = endOfPaginationReached)
         } catch (e: IOException) {
             return MediatorResult.Error(e)
         } catch (e: HttpException) {
             return MediatorResult.Error(e)
+        }
+    }
+
+    //EspressoUriIdlingResource implemented for testing purpose.
+    private suspend fun newssterResponse(
+        loadKey: Int,
+        state: PagingState<Int, Article>
+    ): NewssterResponse {
+        EspressoUriIdlingResource.beginLoad()
+        try {
+            return service.getNews(
+                country = language,
+                category = category,
+                page = loadKey,
+                pageSize = state.config.pageSize
+            )
+        } finally {
+            EspressoUriIdlingResource.endLoad()
         }
     }
 
