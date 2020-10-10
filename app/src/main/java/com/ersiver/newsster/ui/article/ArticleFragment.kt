@@ -12,8 +12,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
 import com.ersiver.newsster.R
 import com.ersiver.newsster.databinding.ArticleFragmentBinding
@@ -37,7 +35,7 @@ class ArticleFragment : Fragment() {
     ): View? {
         _binding = ArticleFragmentBinding.inflate(inflater, container, false)
 
-        setupActionBarWithNavController()
+        setupActionBar()
         setupOpenWebsiteButton()
 
         articleViewModel.fetchArticle(article.id)
@@ -57,14 +55,13 @@ class ArticleFragment : Fragment() {
         return binding.root
     }
 
-    private fun setupActionBarWithNavController() {
-        val navController = findNavController()
-        val appBarConfiguration = AppBarConfiguration(navController.graph)
+    private fun setupActionBar() {
+        binding.toolbar.apply {
+            setTitle(R.string.app_name)
+            navigationContentDescription = resources.getString(R.string.nav_up)
+            setNavigationOnClickListener { findNavController().navigateUp() }
 
-        binding.apply {
-            toolbar.setupWithNavController(navController, appBarConfiguration)
-            toolbar.setTitle(R.string.app_name)
-            toolbar.setOnMenuItemClickListener {
+            setOnMenuItemClickListener {
                 if (it.itemId == R.id.share)
                     articleViewModel.shareArticle(this@ArticleFragment.article.id)
                 true
