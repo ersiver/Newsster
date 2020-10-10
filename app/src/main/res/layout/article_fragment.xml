@@ -41,6 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
+                app:navigationIcon="@drawable/ic_back"
                 app:menu="@menu/share_menu" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 

@@ -58,4 +58,6 @@
     <!-- Error notification -->
     <string name="error">Something went wrong…</string>
 
+    <string name="nav_up" translatable="false">Navigate up</string>
+
 </resources>
