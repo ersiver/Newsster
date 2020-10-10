@@ -10,7 +10,6 @@ import androidx.annotation.VisibleForTesting
 import androidx.core.app.ShareCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.AppBarConfiguration
@@ -43,9 +42,9 @@ class ArticleFragment : Fragment() {
 
         articleViewModel.fetchArticle(article.id)
 
-        articleViewModel.articleLiveData.observe(viewLifecycleOwner, Observer { article ->
+        articleViewModel.articleLiveData.observe(viewLifecycleOwner) { article ->
             displayArticle(article)
-        })
+        }
 
         articleViewModel.shareArticleEvent.observe(viewLifecycleOwner, EventObserver { articleUrl ->
             shareArticle(articleUrl)
