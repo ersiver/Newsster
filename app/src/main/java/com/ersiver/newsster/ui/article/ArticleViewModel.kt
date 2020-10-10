@@ -12,12 +12,8 @@ class ArticleViewModel @ViewModelInject constructor(
 
     private val _articleId = MutableLiveData<String>()
 
-    val articleLiveData: LiveData<Article>
-
-    init {
-        articleLiveData = _articleId.switchMap {articleId ->
-            repository.getArticle(articleId).asLiveData()
-        }
+    val articleLiveData: LiveData<Article> = _articleId.switchMap { id->
+        repository.getArticle(id).asLiveData()
     }
 
     private val _shareArticleEvent = MutableLiveData<SingleEvent<String>>()
