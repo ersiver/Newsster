@@ -1,9 +1,7 @@
 package com.ersiver.newsster
 
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate.*
 import androidx.appcompat.widget.Toolbar
