@@ -21,12 +21,14 @@ import com.ersiver.newsster.model.Article
 import com.ersiver.newsster.ui.list.ArticleAdapter.ArticleViewClick
 import com.ersiver.newsster.util.DEFAULT_LANGUAGE
 import com.ersiver.newsster.util.EventObserver
+import com.ersiver.newsster.util.NEWSSTER_TOP
 import com.ersiver.newsster.util.PREF_LANGUAGE_KEY
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @AndroidEntryPoint
 @ExperimentalPagingApi
@@ -36,6 +38,7 @@ class ArticleListFragment : Fragment() {
     private lateinit var adapter: ArticleAdapter
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var toolbar: Toolbar
+    private var categoryLocalized: String = NEWSSTER_TOP
     private var _binding: ArticleListFragmentBinding? = null
     private val binding
         get() = _binding!!
@@ -55,7 +58,7 @@ class ArticleListFragment : Fragment() {
         setupNavigationToArticle()
 
         viewModel.categoryLiveData.observe(viewLifecycleOwner) {
-            updateToolbarTitle(it)
+            updateToolbarTitle()
             getNewsAndNotifyAdapter()
         }
 
@@ -79,10 +82,7 @@ class ArticleListFragment : Fragment() {
             }
         })
 
-        binding.articleList.adapter = adapter.withLoadStateHeaderAndFooter(
-            header = NetworkStateAdapter(adapter),
-            footer = NetworkStateAdapter(adapter)
-        )
+        binding.articleList.adapter = adapter
 
         adapter.addLoadStateListener { loadState ->
             binding.articleList.isVisible = loadState.refresh is LoadState.NotLoading
@@ -113,8 +113,8 @@ class ArticleListFragment : Fragment() {
         }
     }
 
-    private fun updateToolbarTitle(category: String) {
-        toolbar.title = resources.getString(R.string.app_name) + " $category"
+    private fun updateToolbarTitle() {
+        toolbar.title = categoryLocalized
     }
 
     private fun scrollToTopWhenRefreshed(loadState: CombinedLoadStates) {
@@ -123,14 +123,15 @@ class ArticleListFragment : Fragment() {
     }
 
     private fun manageErrors(loadState: CombinedLoadStates) {
+        binding.errorText.isVisible = loadState.refresh is LoadState.Error
         binding.retryButton.isVisible = loadState.refresh is LoadState.Error
         binding.retryButton.setOnClickListener { adapter.retry() }
 
-        binding.errorText.isVisible = loadState.refresh is LoadState.Error
         val errorState = loadState.source.append as? LoadState.Error
             ?: loadState.source.prepend as? LoadState.Error
             ?: loadState.append as? LoadState.Error
             ?: loadState.prepend as? LoadState.Error
+
         errorState?.let {
             val errorText = resources.getString(R.string.error) + it.error.toString()
             binding.errorText.text = errorText
@@ -164,7 +165,9 @@ class ArticleListFragment : Fragment() {
             .setTitle(resources.getString(R.string.dialog_title))
             .setIcon(R.drawable.ic_logo)
             .setItems(items) { _, which ->
-                val category = itemsValue[which]
+
+                categoryLocalized = items[which]
+                val category: String = itemsValue[which]
 
                 viewModel.updateCategory(category)
             }

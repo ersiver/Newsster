@@ -10,7 +10,7 @@
     <string name="health">Zdrowie</string>
     <string name="sport">Sport</string>
     <string name="technology">Technologia</string>
-    <string name="newsster_top">Newsster wybrane</string>
+    <string name="newsster_top">Newsster top</string>
 
     <!-- Languages -->
     <string name="english">Angielski</string>
@@ -20,7 +20,7 @@
     <string name="spanish">Hiszpański</string>
 
     <!-- Sharing article info-->
-    <string name="share_article">share article</string>
+    <string name="share_article">Udostępnij</string>
 
     <!-- Reading more info-->
     <string name="continue_reading">czytaj dalej -></string>
@@ -37,7 +37,7 @@
     <string name="action_categories">Kategorie</string>
 
     <!-- Dialog title -->
-    <string name="dialog_title">Wybierz kategorie</string>
+    <string name="dialog_title">Wybierz kategorię</string>
 
     <string name="retry">Ponów</string>
 

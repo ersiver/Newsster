@@ -91,7 +91,7 @@ class ArticleFragment : Fragment() {
         ShareCompat.IntentBuilder
             .from(requireActivity())
             .setType(mimeType)
-            .setChooserTitle("Share link")
+            .setChooserTitle(resources.getString(R.string.share_article))
             .setText(articleUrl)
             .startChooser()
     }
