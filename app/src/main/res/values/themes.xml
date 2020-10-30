@@ -1,18 +1,20 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="NewssterTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="NewssterTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="colorPrimary">@color/newssterPrimaryColor</item>
         <item name="colorPrimaryDark">@color/newssterPrimaryDarkColor</item>
         <item name="colorPrimaryVariant">@color/newssterPrimaryLightColor</item>
         <item name="colorAccent">@color/newssterSecondaryColor</item>
-
         <item name="colorOnPrimary">@color/newssterPrimaryTextColor</item>
         <item name="colorOnSecondary">@color/newssterSecondaryTextColor</item>
         <item name="colorSecondaryVariant">@color/newssterSecondaryLightColor</item>
 
         <item name="fontFamily">@font/work_sans_medium</item>
         <item name="android:fontFamily">@font/work_sans_medium</item>
+
+        <item name="toolbarStyle">@style/NewssterToolbar</item>
+        <item name="collapsedTitleTextAppearance">@style/NewssterToolbarTitle</item>
     </style>
 </resources>
 

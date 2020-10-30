@@ -11,7 +11,7 @@
   <!--Components' custom colors-->
   <color name="customCardviewSurfaceColor">#ffffff</color>
   <color name="customDialogTitlePanelColor">#cfdbe1</color>
-  
+
   <!--Text colors-->
   <color name="newssterPrimaryTextColor">#000000</color>
   <color name="newssterSecondaryTextColor">#ffffff</color>

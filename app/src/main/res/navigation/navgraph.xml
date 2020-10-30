@@ -33,7 +33,7 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.ersiver.newsster.ui.settings.SettingsFragment"
-        android:label="SettingsFragment" >
+        android:label="SettingsFragment">
         <action
             android:id="@+id/action_settingsFragment_to_articleListFragment"
             app:destination="@id/articleListFragment" />

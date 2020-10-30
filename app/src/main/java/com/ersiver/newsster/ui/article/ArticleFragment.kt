@@ -16,9 +16,8 @@ import com.bumptech.glide.Glide
 import com.ersiver.newsster.R
 import com.ersiver.newsster.databinding.ArticleFragmentBinding
 import com.ersiver.newsster.model.Article
-import com.ersiver.newsster.util.EventObserver
-import dagger.hilt.android.AndroidEntryPoint
 import com.ersiver.newsster.util.*
+import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ArticleFragment : Fragment() {

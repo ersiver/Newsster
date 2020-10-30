@@ -65,4 +65,8 @@
         <item name="android:letterSpacing">0.03125</item>
     </style>
 
+    <!-- Toolbar Title -->
+    <style name="NewssterToolbarTitle" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="fontFamily">@font/work_sans_semibold</item>
+    </style>
 </resources>

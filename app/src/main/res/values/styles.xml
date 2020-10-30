@@ -3,8 +3,21 @@
 
     <!-- Components -->
 
+    <!-- Override theme to use the custom appbar rather than supplied by the window decor -->
+    <style name="NewssterTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
     <!-- Appbar -->
     <style name="NewssterAppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
+
+    <!-- Toolbar -->
+    <style name="NewssterToolbar" parent="Widget.MaterialComponents.Toolbar">
+        <item name="android:background">@color/newssterPrimaryColor</item>
+        <item name="titleTextAppearance">@style/NewssterToolbarTitle</item>
+        <item name="elevation">4dp</item>
+    </style>
 
     <!-- Menu Item. Set primary color for the text, so it's dark on light bg and vice versa -->
     <style name="NewssterPopupOverlay" parent="ThemeOverlay.MaterialComponents">
@@ -12,12 +25,10 @@
         <item name="android:textColor">@color/newssterPrimaryTextColor</item>
     </style>
 
-
     <!-- Progress indicator -->
     <style name="NewssterProgessIndicator" parent="Widget.MaterialComponents.ProgressIndicator.Circular.Indeterminate">
        <item name="indicatorColor">@color/newssterSecondaryColor</item>
     </style>
-
 
     <!-- Retry button -->
     <style name="NewssterButton" parent="Widget.MaterialComponents.Button">
@@ -27,7 +38,6 @@
         <item name="shapeAppearance">?attr/shapeAppearanceMediumComponent</item>
     </style>
 
-    
     <!-- Categories Picker Dialog -->
     <style name="NewssterMaterialAlertDialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
         <item name="alertDialogStyle">@style/MaterialAlertDialog.App</item>
