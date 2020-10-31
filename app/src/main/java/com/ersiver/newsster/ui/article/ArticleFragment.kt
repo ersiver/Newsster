@@ -62,7 +62,7 @@ class ArticleFragment : Fragment() {
 
             setOnMenuItemClickListener {
                 if (it.itemId == R.id.share)
-                    articleViewModel.shareArticle(this@ArticleFragment.article.id)
+                    articleViewModel.shareArticle(this@ArticleFragment.article.url)
                 true
             }
         }

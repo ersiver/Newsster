@@ -3,18 +3,11 @@
 
     <!-- Components -->
 
-    <!-- Override theme to use the custom appbar rather than supplied by the window decor -->
-    <style name="NewssterTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
     <!-- Appbar -->
     <style name="NewssterAppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
 
     <!-- Toolbar -->
     <style name="NewssterToolbar" parent="Widget.MaterialComponents.Toolbar">
-        <item name="android:background">@color/newssterPrimaryColor</item>
         <item name="titleTextAppearance">@style/NewssterToolbarTitle</item>
         <item name="elevation">4dp</item>
     </style>

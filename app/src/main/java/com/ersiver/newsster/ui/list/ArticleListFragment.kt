@@ -28,7 +28,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 @AndroidEntryPoint
 @ExperimentalPagingApi
@@ -49,8 +48,8 @@ class ArticleListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = ArticleListFragmentBinding.inflate(inflater, container, false)
-        toolbar = binding.homeToolbar
 
+        setupCustomToolbar()
         getPrefs()
         initAdapter()
         getNewsAndNotifyAdapter()
@@ -67,6 +66,10 @@ class ArticleListFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    private fun setupCustomToolbar() {
+        toolbar = binding.homeToolbar
     }
 
     private fun getPrefs() {
@@ -178,4 +181,5 @@ class ArticleListFragment : Fragment() {
         super.onDestroy()
         _binding = null
     }
+
 }
