@@ -120,7 +120,6 @@ class AppNavigationTest {
         //Navigate to Article and click UpButton.
         onView(withId(R.id.article_list))
             .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
-
         onView(withContentDescription("Navigate up")).perform(click())
 
         //Verify navigation to list screen
@@ -130,11 +129,11 @@ class AppNavigationTest {
     }
 
     /**
-     * Test to check that, if the up button "<-" in the Settings
+     * Test to check that, if the system back button in the Settings
      * is clicked, then we navigate back to the list screen.
      */
     @Test
-    fun settingFragment_upButton_navigateToHomeScreen() {
+    fun settingFragment_backButton_navigateToHomeScreen() {
         //Start up list screen.
         val activityScenario = ActivityScenario.launch(MainActivity::class.java)
 
@@ -147,7 +146,7 @@ class AppNavigationTest {
             .perform(click())
 
         //In Settings fragment click back btn.
-        onView(withContentDescription("Navigate up")).perform(click())
+        pressBack()
 
         //Verify navigation to list screen
         onView(withId(R.id.home_toolbar)).check(matches(isDisplayed()))
