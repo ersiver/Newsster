@@ -1,6 +1,6 @@
 package com.ersiver.newsster.util
 
-const val API_KEY = "079dac7a5f94ebdf990ecf618854b7" //Obtain your api key
+const val API_KEY = "079dac7a5f94ebdf990ecf61885478b7" //Obtain your api key
 
 const val BASE_URL = "https://newsapi.org/v2/"
 
