@@ -5,11 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.CombinedLoadStates
@@ -18,11 +17,7 @@ import androidx.paging.LoadState
 import androidx.preference.PreferenceManager
 import com.ersiver.newsster.R
 import com.ersiver.newsster.databinding.ArticleListFragmentBinding
-import com.ersiver.newsster.model.Article
-import com.ersiver.newsster.ui.list.ArticleAdapter.ArticleViewClick
 import com.ersiver.newsster.util.DEFAULT_LANGUAGE
-import com.ersiver.newsster.util.EventObserver
-import com.ersiver.newsster.util.NEWSSTER_TOP
 import com.ersiver.newsster.util.PREF_LANGUAGE_KEY
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,7 +33,6 @@ class ArticleListFragment : Fragment() {
     private lateinit var adapter: ArticleAdapter
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var toolbar: Toolbar
-    private var categoryLocalized: String = NEWSSTER_TOP
     private var _binding: ArticleListFragmentBinding? = null
     private val binding
         get() = _binding!!
@@ -47,7 +41,7 @@ class ArticleListFragment : Fragment() {
     fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = ArticleListFragmentBinding.inflate(inflater, container, false)
 
         setupCustomToolbar()
@@ -55,10 +49,12 @@ class ArticleListFragment : Fragment() {
         initAdapter()
         getNewsAndNotifyAdapter()
         showCategoryPopupMenu()
-        setupNavigationToArticle()
+
+        viewModel.categoryLocalLiveData.observe(viewLifecycleOwner) { category ->
+            updateToolbarTitle(category)
+        }
 
         viewModel.categoryLiveData.observe(viewLifecycleOwner) {
-            updateToolbarTitle()
             getNewsAndNotifyAdapter()
         }
 
@@ -80,50 +76,27 @@ class ArticleListFragment : Fragment() {
     }
 
     private fun initAdapter() {
-        adapter = ArticleAdapter(object : ArticleViewClick {
-            override fun onClick(view: View, article: Article) {
-                viewModel.openArticle(article)
-            }
-        })
-
+        adapter = ArticleAdapter()
         binding.articleList.adapter = adapter
 
         adapter.addLoadStateListener { loadState ->
             binding.articleList.isVisible = loadState.refresh is LoadState.NotLoading
             binding.progress.isVisible = loadState.refresh is LoadState.Loading
-            scrollToTopWhenRefreshed(loadState)
             manageErrors(loadState)
         }
-    }
-
-    private fun setupNavigationToArticle() {
-        viewModel.navigateToArticleEvent.observe(
-            viewLifecycleOwner,
-            EventObserver { article ->
-                val action =
-                    ArticleListFragmentDirections.actionArticleListFragmentToArticleFragment(
-                        article
-                    )
-                this.findNavController().navigate(action)
-            })
     }
 
     private fun getNewsAndNotifyAdapter() {
         job?.cancel()
         job = lifecycleScope.launch {
-            viewModel.loadNews().collectLatest {
-                adapter.submitData(it)
-            }
+            viewModel.loadNews().collectLatest { adapter.submitData(it) }
         }
     }
 
-    private fun updateToolbarTitle() {
-        toolbar.title = categoryLocalized
-    }
-
-    private fun scrollToTopWhenRefreshed(loadState: CombinedLoadStates) {
-        if (loadState.refresh == LoadState.Loading)
-            binding.articleList.scrollToPosition(0)
+    //Title matches the category name in the localized language.
+    private fun updateToolbarTitle(categoryLocalized: Int) {
+        val titles = resources.getStringArray(R.array.categories_titles)
+        toolbar.title = titles[categoryLocalized]
     }
 
     private fun manageErrors(loadState: CombinedLoadStates) {
@@ -169,11 +142,9 @@ class ArticleListFragment : Fragment() {
             .setTitle(resources.getString(R.string.dialog_title))
             .setIcon(R.drawable.ic_logo)
             .setItems(items) { _, which ->
-
-                categoryLocalized = items[which]
                 val category: String = itemsValue[which]
 
-                viewModel.updateCategory(category)
+                viewModel.updateCategory(category, which)
             }
             .show()
     }
@@ -182,5 +153,4 @@ class ArticleListFragment : Fragment() {
         super.onDestroy()
         _binding = null
     }
-
 }

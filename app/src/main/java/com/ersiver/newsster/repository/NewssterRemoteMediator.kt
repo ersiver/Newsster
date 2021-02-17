@@ -17,6 +17,7 @@ import timber.log.Timber
 import java.io.IOException
 import java.io.InvalidObjectException
 import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
  * RemoteMediator for a DB + Network based PagingData stream, which
@@ -24,6 +25,7 @@ import javax.inject.Inject
  * scrolls to the end of the list of items stored in DB.
  */
 @ExperimentalPagingApi
+@Singleton
 class NewssterRemoteMediator @Inject constructor(
     private val language: String,
     private val category: String,

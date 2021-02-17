@@ -23,26 +23,23 @@ class ArticleListViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    private val _navigateToArticleEvent = MutableLiveData<SingleEvent<Article>>()
-    val navigateToArticleEvent: LiveData<SingleEvent<Article>>
-        get() = _navigateToArticleEvent
+    private var currentNews: Flow<PagingData<Article>>? = null
 
-    private val _categoryLiveData = MutableLiveData<String>()
+    //To set the toolbar title in the system's selected language.
+    private val _categoryLocalizedLiveData: MutableLiveData<Int> =
+        MutableLiveData(getLastSavedLocalizedCategory())
+
+    //To send the category related query to the News API.
+    private val _categoryLiveData: MutableLiveData<String> = MutableLiveData(getLastSavedCategory())
+
+    //To send the language related query to the news API.
+    private val _languageLiveData: MutableLiveData<String> = MutableLiveData(getLastSavedLanguage())
+
+    val categoryLocalLiveData: LiveData<Int> get() = _categoryLocalizedLiveData
     val categoryLiveData: LiveData<String> get() = _categoryLiveData
-
-    private val _languageLiveData = MutableLiveData<String>()
     val languageLiveData: LiveData<String> get() = _languageLiveData
 
-    init {
-        _categoryLiveData.value = getLastSavedCategory()
-    }
-
-    private var currentNews: Flow<PagingData<Article>>? = null
-    val news: Flow<PagingData<Article>>?
-        get() = currentNews
-
-    fun loadNews(
-    ): Flow<PagingData<Article>> {
+    fun loadNews(): Flow<PagingData<Article>> {
         val category = _categoryLiveData.value!!
         val language = _languageLiveData.value!!
 
@@ -52,10 +49,13 @@ class ArticleListViewModel @Inject constructor(
 
         val newNews =
             repository.fetchArticles(language, category).cachedIn(viewModelScope)
-
         currentNews = newNews
+
+        //Save new filters after checks are made to establish, if the news should be refreshed.
         saveCategoryFiltering(category)
         saveLanguageFiltering(language)
+        saveCategoryLocalized()
+
         return newNews
     }
 
@@ -74,12 +74,14 @@ class ArticleListViewModel @Inject constructor(
             SAVED_STATE_LANGUAGE
         ).value ?: DEFAULT_LANGUAGE
 
-    fun openArticle(article: Article) {
-        _navigateToArticleEvent.value = SingleEvent(article)
-    }
+    private fun getLastSavedLocalizedCategory() = savedStateHandle
+        .getLiveData<Int>(
+            SAVED_STATE_LOCAL_TITLE
+        ).value ?: DEFAULT_TITLE
 
-    fun updateCategory(category: String) {
+    fun updateCategory(category: String, categoryLocalized: Int) {
         _categoryLiveData.value = category
+        _categoryLocalizedLiveData.value = categoryLocalized
     }
 
     fun updateLanguage(language: String) {
@@ -92,5 +94,11 @@ class ArticleListViewModel @Inject constructor(
 
     fun saveLanguageFiltering(language: String) {
         savedStateHandle.set(SAVED_STATE_LANGUAGE, language)
+    }
+
+    private fun saveCategoryLocalized() {
+        _categoryLocalizedLiveData.value?.let {
+            savedStateHandle.set(SAVED_STATE_LOCAL_TITLE, it)
+        }
     }
 }
