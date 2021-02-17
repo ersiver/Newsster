@@ -1,7 +1,5 @@
 package com.ersiver.newsster.ui.list
 
-import androidx.hilt.Assisted
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.PagingData
@@ -9,7 +7,9 @@ import androidx.paging.cachedIn
 import com.ersiver.newsster.model.Article
 import com.ersiver.newsster.repository.NewssterRepository
 import com.ersiver.newsster.util.*
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
 /**
  * ViewModel for the [ArticleListFragment] screen.
@@ -17,9 +17,10 @@ import kotlinx.coroutines.flow.Flow
  * to get the list of articles.
  */
 @ExperimentalPagingApi
-class ArticleListViewModel @ViewModelInject constructor(
+@HiltViewModel
+class ArticleListViewModel @Inject constructor(
     private val repository: NewssterRepository,
-    @Assisted private val savedStateHandle: SavedStateHandle
+    private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
     private val _navigateToArticleEvent = MutableLiveData<SingleEvent<Article>>()
@@ -63,12 +64,12 @@ class ArticleListViewModel @ViewModelInject constructor(
                 || language != getLastSavedLanguage()
     }
 
-     fun getLastSavedCategory() = savedStateHandle
+    fun getLastSavedCategory() = savedStateHandle
         .getLiveData<String>(
             SAVED_STATE_CATEGORY
         ).value ?: DEFAULT_STATE_CATEGORY
 
-     fun getLastSavedLanguage() = savedStateHandle
+    fun getLastSavedLanguage() = savedStateHandle
         .getLiveData<String>(
             SAVED_STATE_LANGUAGE
         ).value ?: DEFAULT_LANGUAGE

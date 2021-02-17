@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -32,7 +33,7 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 @ExperimentalPagingApi
 class ArticleListFragment : Fragment() {
-    private val viewModel by viewModels<ArticleListViewModel>()
+    private val viewModel: ArticleListViewModel by hiltNavGraphViewModels(R.id.navgraph)
     private var job: Job? = null
     private lateinit var adapter: ArticleAdapter
     private lateinit var sharedPreferences: SharedPreferences

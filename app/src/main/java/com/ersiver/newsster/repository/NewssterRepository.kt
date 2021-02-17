@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
  * Repository implementation that uses a database backed
@@ -19,6 +20,8 @@ import javax.inject.Inject
  * to load pages from network when there are no more items cached
  * in the database to load.
  */
+
+@Singleton
 class NewssterRepository @Inject constructor(
     private val service: NewssterService,
     private val database: NewssterDatabase

@@ -22,7 +22,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class ArticleFragment : Fragment() {
     @VisibleForTesting
-    private val articleViewModel by viewModels<ArticleViewModel>()
+    private val articleViewModel: ArticleViewModel by viewModels()
     private val args: ArticleFragmentArgs by navArgs()
     private val article: Article by lazy { args.selectedArticle }
     private var _binding: ArticleFragmentBinding? = null

@@ -1,12 +1,14 @@
 package com.ersiver.newsster.ui.article
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.ersiver.newsster.model.Article
 import com.ersiver.newsster.repository.NewssterRepository
 import com.ersiver.newsster.util.SingleEvent
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class ArticleViewModel @ViewModelInject constructor(
+@HiltViewModel
+class ArticleViewModel @Inject constructor(
     private val repository: NewssterRepository
 ) : ViewModel() {
 
