@@ -18,11 +18,6 @@
         <item name="android:textColor">@color/newssterPrimaryTextColor</item>
     </style>
 
-    <!-- Progress indicator -->
-    <style name="NewssterProgessIndicator" parent="Widget.MaterialComponents.ProgressIndicator.Circular.Indeterminate">
-       <item name="indicatorColor">@color/newssterSecondaryColor</item>
-    </style>
-
     <!-- Retry button -->
     <style name="NewssterButton" parent="Widget.MaterialComponents.Button">
         <item name="backgroundTint">@color/newssterSecondaryLightColor</item>
