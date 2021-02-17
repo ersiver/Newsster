@@ -38,19 +38,10 @@ class ArticleListViewModelTest {
         viewModel = ArticleListViewModel(repository, SavedStateHandle())
     }
 
-    @Test
-    fun openArticleTest() {
-        viewModel.openArticle(article)
-        val event = viewModel.navigateToArticleEvent.getOrAwaitValue()
-        assertThat(
-            event.getContentIfNotHandled(),
-            `is`(article)
-        )
-    }
 
     @Test
     fun updateCategoryTest() {
-        viewModel.updateCategory("sport")
+        viewModel.updateCategory("sport", 0)
         val value = viewModel.categoryLiveData.getOrAwaitValue()
         assertThat(value, `is`("sport"))
     }
