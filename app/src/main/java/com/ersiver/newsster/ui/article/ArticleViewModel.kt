@@ -12,30 +12,33 @@ class ArticleViewModel @Inject constructor(
     private val repository: NewssterRepository
 ) : ViewModel() {
 
-    private val _articleId = MutableLiveData<String>()
+    private val _openWebsiteEvent = MutableLiveData<SingleEvent<Article>>()
+    private val _shareArticleEvent = MutableLiveData<SingleEvent<Article>>()
+    private var articleLive: LiveData<Article>? = null
 
-    val articleLiveData: LiveData<Article> = _articleId.switchMap { id->
-        repository.getArticle(id).asLiveData()
-    }
-
-    private val _shareArticleEvent = MutableLiveData<SingleEvent<String>>()
-    val shareArticleEvent: LiveData<SingleEvent<String>>
+    val shareArticleEvent: LiveData<SingleEvent<Article>>
         get() = _shareArticleEvent
 
-    private val _openWebsiteEvent = MutableLiveData<SingleEvent<String>>()
-    val openWebsiteEvent: LiveData<SingleEvent<String>>
+    val openWebsiteEvent: LiveData<SingleEvent<Article>>
         get() = _openWebsiteEvent
 
-
-    fun fetchArticle(id: String) {
-        _articleId.value = id
+    fun getArticle(id: String): LiveData<Article> {
+        return articleLive ?: liveData {
+            emit(repository.getArticle(id))
+        }.also {
+            articleLive = it
+        }
     }
 
-    fun shareArticle(articleUrl: String) {
-        _shareArticleEvent.value = SingleEvent(articleUrl)
+    fun shareArticle() {
+        articleLive?.value?.let {
+            _shareArticleEvent.value = SingleEvent(it)
+        }
     }
 
-    fun openWebsite(articleUrl: String) {
-        _openWebsiteEvent.value = SingleEvent(articleUrl)
+    fun openWebsite() {
+        articleLive?.value?.let {
+            _openWebsiteEvent.value = SingleEvent(it)
+        }
     }
 }

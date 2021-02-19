@@ -63,8 +63,8 @@ class ArticleViewHolder(private val binding: ArticleItemBinding) :
         }
     }
 
-    private fun navigateToDetail(articleItem: Article, view: View) {
-        val directions = ArticleListFragmentDirections.actionArticleListFragmentToArticleFragment(articleItem)
+    private fun navigateToDetail(article: Article, view: View) {
+        val directions = ArticleListFragmentDirections.actionArticleListFragmentToArticleFragment(article.id)
         view.findNavController().navigate(directions)
     }
 
