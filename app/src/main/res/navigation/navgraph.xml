@@ -25,7 +25,7 @@
         tools:layout="@layout/article_fragment">
         <argument
             android:name="articleId"
-            app:argType="integer" />
+            app:argType="string" />
         <action
             android:id="@+id/action_articleFragment_to_articleListFragment"
             app:destination="@id/articleListFragment" />
