@@ -24,8 +24,8 @@
         android:label="detail_fragment"
         tools:layout="@layout/article_fragment">
         <argument
-            android:name="selectedArticle"
-            app:argType="com.ersiver.newsster.model.Article" />
+            android:name="articleId"
+            app:argType="integer" />
         <action
             android:id="@+id/action_articleFragment_to_articleListFragment"
             app:destination="@id/articleListFragment" />
