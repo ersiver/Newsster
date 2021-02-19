@@ -7,7 +7,7 @@ import com.ersiver.newsster.model.Source
 object TestUtil {
 
     fun createArticle() = Article(
-        id = "_testId",
+        id = "TEST_ID",
         url = "https://www.bbc.co.uk/news/uk-england-stoke-staffordshire-53690521",
         author = "https://www.facebook.com/bbcnews",
         title = "Stone pub landlord 'complacent' in enforcing Covid rules - BBC News",

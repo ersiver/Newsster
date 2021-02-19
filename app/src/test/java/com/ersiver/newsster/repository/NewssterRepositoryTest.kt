@@ -7,10 +7,9 @@ import com.ersiver.newsster.db.ArticleDao
 import com.ersiver.newsster.db.NewssterDatabase
 import com.ersiver.newsster.utils.TestUtil
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.runBlocking
+import org.hamcrest.CoreMatchers.`is`
 import org.hamcrest.MatcherAssert.assertThat
-import org.hamcrest.core.Is.`is`
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -40,7 +39,7 @@ class NewssterRepositoryTest {
     }
 
     @Test
-    fun getArticle_flowEmitsArticle() = runBlocking {
+    fun getArticle_emitArticle() = runBlocking {
         //Stub out database to return a mock dao.
         val dao = mock(ArticleDao::class.java)
         `when`(database.articleDao()).thenReturn(dao)
@@ -50,11 +49,18 @@ class NewssterRepositoryTest {
         `when`(dao.getNewsById("TEST_ID")).thenReturn(article)
 
         //Method under test.
-        val flow = repository.getArticle("TEST_ID")
+        val value = repository.getArticle("TEST_ID")
 
         //Verify data in the result.
-        flow.collect { result ->
-            assertThat(result, `is`(article))
-        }
+        assertThat(value.id, `is`(article.id))
+        assertThat(value.title, `is`(article.title))
+        assertThat(value.description, `is`(article.description))
+        assertThat(value.author, `is`(article.author))
+        assertThat(value.url, `is`(article.url))
+        assertThat(value.source.name, `is`(article.source.name))
+        assertThat(value.imgUrl, `is`(article.imgUrl))
+        assertThat(value.category, `is`(article.category))
+        assertThat(value.language, `is`(article.language))
+        assertThat(value.date, `is`(article.date))
     }
 }
