@@ -11,6 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -38,10 +39,11 @@ class NewssterRepository @Inject constructor(
             ).flow
     }
 
-    fun getArticle(id: String) = flow {
-        val article = database.articleDao().getNewsById(id)
-        emit(article)
-    }.flowOn(Dispatchers.Default)
+    suspend fun getArticle(id: String) : Article{
+        return withContext(Dispatchers.IO){
+            database.articleDao().getNewsById(id)
+        }
+    }
 
     companion object {
         private const val NETWORK_PAGE_SIZE = 80
