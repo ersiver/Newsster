@@ -1,6 +1,9 @@
 package com.ersiver.newsster.ui.article
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
 import com.ersiver.newsster.model.Article
 import com.ersiver.newsster.repository.NewssterRepository
 import com.ersiver.newsster.util.SingleEvent
@@ -14,7 +17,7 @@ class ArticleViewModel @Inject constructor(
 
     private val _openWebsiteEvent = MutableLiveData<SingleEvent<Article>>()
     private val _shareArticleEvent = MutableLiveData<SingleEvent<Article>>()
-    private var articleLive: LiveData<Article>? = null
+    var articleLiveData: LiveData<Article>? = null
 
     val shareArticleEvent: LiveData<SingleEvent<Article>>
         get() = _shareArticleEvent
@@ -23,21 +26,21 @@ class ArticleViewModel @Inject constructor(
         get() = _openWebsiteEvent
 
     fun getArticle(id: String): LiveData<Article> {
-        return articleLive ?: liveData {
+        return articleLiveData ?: liveData {
             emit(repository.getArticle(id))
         }.also {
-            articleLive = it
+            articleLiveData = it
         }
     }
 
     fun shareArticle() {
-        articleLive?.value?.let {
+        articleLiveData?.value?.let {
             _shareArticleEvent.value = SingleEvent(it)
         }
     }
 
     fun openWebsite() {
-        articleLive?.value?.let {
+        articleLiveData?.value?.let {
             _openWebsiteEvent.value = SingleEvent(it)
         }
     }
