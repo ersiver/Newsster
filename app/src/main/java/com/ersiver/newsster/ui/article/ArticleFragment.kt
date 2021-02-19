@@ -10,7 +10,6 @@ import androidx.annotation.VisibleForTesting
 import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ShareCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -104,7 +103,7 @@ class ArticleFragment : Fragment() {
         }
     }
 
-    //Share artivle url
+    //Share article url
     private fun shareArticle(article: Article) {
         val mimeType = "text/plain"
         ShareCompat.IntentBuilder
