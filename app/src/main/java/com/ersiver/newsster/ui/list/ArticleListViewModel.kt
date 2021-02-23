@@ -24,15 +24,9 @@ class ArticleListViewModel @Inject constructor(
 ) : ViewModel() {
 
     private var currentNews: Flow<PagingData<Article>>? = null
-
-    //To set the toolbar title in the system's selected language.
     private val _categoryLocalizedLiveData: MutableLiveData<Int> =
         MutableLiveData(getLastSavedLocalizedCategory())
-
-    //To send the category related query to the News API.
     private val _categoryLiveData: MutableLiveData<String> = MutableLiveData(getLastSavedCategory())
-
-    //To send the language related query to the news API.
     private val _languageLiveData: MutableLiveData<String> = MutableLiveData(getLastSavedLanguage())
 
     val categoryLocalLiveData: LiveData<Int> get() = _categoryLocalizedLiveData

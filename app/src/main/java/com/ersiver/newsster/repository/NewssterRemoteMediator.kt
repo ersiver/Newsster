@@ -141,7 +141,7 @@ class NewssterRemoteMediator @Inject constructor(
     }
 
     private suspend fun getRemoteKeyForFirstItem(state: PagingState<Int, Article>): RemoteKey? {
-        return state.pages.firstOrNull() {
+        return state.pages.firstOrNull {
             it.data.isNotEmpty()
         }?.data?.firstOrNull()?.let { firstArticle ->
             remoteKeyDao.remoteKeyByArticle(firstArticle.id)

@@ -35,43 +35,40 @@ class ArticleViewModelTest {
     private val service = mock(NewssterService::class.java)
 
     @Before
-    fun setup() = runBlockingTest {
+    fun setup() {
         repository = NewssterRepository(service, database)
         viewModel = ArticleViewModel(repository)
-
-        `when`(database.articleDao().getNewsById("TEST_ID")).thenReturn(article)
-        viewModel.getArticle(id = "TEST_ID")
     }
 
     @Test
-    fun fetchArticleTest() = coroutinesRule.runBlockingTest {
-        val value = viewModel.articleLiveData?.getOrAwaitValue()
-        assertThat(value?.id, `is`("TEST_ID"))
-        assertThat(value?.title, `is`(article.title))
-        assertThat(value?.description, `is`(article.description))
-        assertThat(value?.author, `is`(article.author))
-        assertThat(value?.url, `is`(article.url))
-        assertThat(value?.source?.name, `is`(article.source.name))
-        assertThat(value?.imgUrl, `is`(article.imgUrl))
-        assertThat(value?.category, `is`(article.category))
-        assertThat(value?.language, `is`(article.language))
-        assertThat(value?.date, `is`(article.date))
+    fun fetchArticleTest() = runBlockingTest {
+        `when`(database.articleDao().getNewsById("_testId")).thenReturn(article)
+        viewModel.fetchArticle(id = "_testId")
+
+        val value = viewModel.articleLiveData.getOrAwaitValue()
+        assertThat(value.id, `is`(article.id))
+        assertThat(value.title, `is`(article.title))
+        assertThat(value.description, `is`(article.description))
+        assertThat(value.author, `is`(article.author))
+        assertThat(value.url, `is`(article.url))
+        assertThat(value.source.name, `is`(article.source.name))
+        assertThat(value.imgUrl, `is`(article.imgUrl))
+        assertThat(value.category, `is`(article.category))
+        assertThat(value.language, `is`(article.language))
+        assertThat(value.date, `is`(article.date))
     }
 
     @Test
-    fun shareArticleTest() = runBlockingTest {
-        viewModel.articleLiveData?.getOrAwaitValue()
-        viewModel.shareArticle()
+    fun shareArticleTest() {
+        viewModel.shareArticle(article.url)
         val event = viewModel.shareArticleEvent.getOrAwaitValue()
-        assertThat(event.getContentIfNotHandled()?.id, `is`("TEST_ID"))
-
+        assertThat(event.getContentIfNotHandled(), `is`(article.url))
     }
 
     @Test
     fun openWebsiteTest() {
-        viewModel.articleLiveData?.getOrAwaitValue()
-        viewModel.openWebsite()
+        viewModel.openWebsite(article.url)
         val event = viewModel.openWebsiteEvent.getOrAwaitValue()
-        assertThat(event.getContentIfNotHandled()?.id, `is`("TEST_ID"))
+        assertThat(event.getContentIfNotHandled(), `is`(article.url))
     }
 }

@@ -16,7 +16,7 @@ import com.ersiver.newsster.util.loadOrGone
 /**
  * Adapter for the grid of articles.
  */
-class ArticleAdapter() :
+class ArticleAdapter :
     PagingDataAdapter<Article, ArticleViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
@@ -63,8 +63,8 @@ class ArticleViewHolder(private val binding: ArticleItemBinding) :
         }
     }
 
-    private fun navigateToDetail(article: Article, view: View) {
-        val directions = ArticleListFragmentDirections.actionArticleListFragmentToArticleFragment(article.id)
+    private fun navigateToDetail(articleItem: Article, view: View) {
+        val directions = ArticleListFragmentDirections.actionArticleListFragmentToArticleFragment(articleItem)
         view.findNavController().navigate(directions)
     }
 

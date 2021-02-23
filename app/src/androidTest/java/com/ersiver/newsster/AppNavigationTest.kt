@@ -17,6 +17,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import com.ersiver.newsster.di.RepositoryModule
 import com.ersiver.newsster.repository.NewssterRepository
+import com.ersiver.newsster.ui.MainActivity
 import com.ersiver.newsster.util.EspressoUriIdlingResource
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -74,7 +75,7 @@ class AppNavigationTest {
         //Click the item.
         onData(anything())
             .inRoot(RootMatchers.isPlatformPopup())
-            .inAdapterView(instanceOf<View>(MenuDropDownListView::class.java))
+            .inAdapterView(instanceOf(MenuDropDownListView::class.java))
             .atPosition(0) // for the first submenu item, here: settings
             .perform(click())
 
@@ -141,7 +142,7 @@ class AppNavigationTest {
         openActionBarOverflowOrOptionsMenu(ApplicationProvider.getApplicationContext())
         onData(anything())
             .inRoot(RootMatchers.isPlatformPopup())
-            .inAdapterView(instanceOf<View>(MenuDropDownListView::class.java))
+            .inAdapterView(instanceOf(MenuDropDownListView::class.java))
             .atPosition(0) // for the first submenu item, here: settings
             .perform(click())
 

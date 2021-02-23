@@ -5,7 +5,6 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.paging.ExperimentalPagingApi
 import com.ersiver.newsster.MainCoroutinesRule
 import com.ersiver.newsster.repository.NewssterRepository
-import com.ersiver.newsster.utils.TestUtil
 import com.ersiver.newsster.utils.getOrAwaitValue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.hamcrest.CoreMatchers.`is`
@@ -30,7 +29,6 @@ class ArticleListViewModelTest {
 
     private lateinit var repository: NewssterRepository
     private lateinit var viewModel: ArticleListViewModel
-    private val article = TestUtil.createArticle()
 
     @Before
     fun setUp() {

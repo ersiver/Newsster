@@ -1,9 +1,6 @@
 package com.ersiver.newsster.ui.article
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
+import androidx.lifecycle.*
 import com.ersiver.newsster.model.Article
 import com.ersiver.newsster.repository.NewssterRepository
 import com.ersiver.newsster.util.SingleEvent
@@ -15,33 +12,30 @@ class ArticleViewModel @Inject constructor(
     private val repository: NewssterRepository
 ) : ViewModel() {
 
-    private val _openWebsiteEvent = MutableLiveData<SingleEvent<Article>>()
-    private val _shareArticleEvent = MutableLiveData<SingleEvent<Article>>()
-    var articleLiveData: LiveData<Article>? = null
+    private val _articleId = MutableLiveData<String>()
+    private val _shareArticleEvent = MutableLiveData<SingleEvent<String>>()
+    private val _openWebsiteEvent = MutableLiveData<SingleEvent<String>>()
 
-    val shareArticleEvent: LiveData<SingleEvent<Article>>
+    val articleLiveData: LiveData<Article> = _articleId.switchMap { id->
+        repository.getArticle(id).asLiveData()
+    }
+
+    val shareArticleEvent: LiveData<SingleEvent<String>>
         get() = _shareArticleEvent
 
-    val openWebsiteEvent: LiveData<SingleEvent<Article>>
+    val openWebsiteEvent: LiveData<SingleEvent<String>>
         get() = _openWebsiteEvent
 
-    fun getArticle(id: String): LiveData<Article> {
-        return articleLiveData ?: liveData {
-            emit(repository.getArticle(id))
-        }.also {
-            articleLiveData = it
-        }
+
+    fun fetchArticle(id: String) {
+        _articleId.value = id
     }
 
-    fun shareArticle() {
-        articleLiveData?.value?.let {
-            _shareArticleEvent.value = SingleEvent(it)
-        }
+    fun shareArticle(articleUrl: String) {
+        _shareArticleEvent.value = SingleEvent(articleUrl)
     }
 
-    fun openWebsite() {
-        articleLiveData?.value?.let {
-            _openWebsiteEvent.value = SingleEvent(it)
-        }
+    fun openWebsite(articleUrl: String) {
+        _openWebsiteEvent.value = SingleEvent(articleUrl)
     }
 }

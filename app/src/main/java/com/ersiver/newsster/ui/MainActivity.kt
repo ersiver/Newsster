@@ -1,9 +1,10 @@
-package com.ersiver.newsster
+package com.ersiver.newsster.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate.*
 import androidx.preference.PreferenceManager
+import com.ersiver.newsster.R
 import com.ersiver.newsster.databinding.ActivityMainBinding
 import com.ersiver.newsster.util.PREF_MODE_KEY
 import dagger.hilt.android.AndroidEntryPoint

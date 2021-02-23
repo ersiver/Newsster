@@ -15,7 +15,7 @@ import androidx.lifecycle.Observer
  * contents has not been handled.
  */
 open class SingleEvent<T>(private val content: T) {
-    var hasBeenHandled = false
+    private var hasBeenHandled = false
         private set
 
     fun getContentIfNotHandled(): T? {
