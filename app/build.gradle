@@ -105,7 +105,7 @@ dependencies {
     testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2'
 
     // Room dependency
-    def room_version = "2.3.0-beta01"
+    def room_version = "2.3.0-beta02"
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     //Kotlin Extensions and Coroutines support for Room
